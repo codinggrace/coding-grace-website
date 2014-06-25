@@ -18,13 +18,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-keys = []
-with open(os.path.join(BASE_DIR, "codinggrace_django/key.csv"), "r") as f:
-    key_reader = csv.reader(f, delimiter=",")
-    for row in key_reader:
-        keys.append(row)
-SECRET_KEY = keys[0][2]
-# SECRET_KEY = 'p&8#-2(e7v-a^#0-5o4!u!y3$e)m-c^2dx79@$yxn$4*_dvky@'
+
+SECRET_KEY = 'p&8#-2(e7v-a^#0-5o4!u!y3$e)m-c^2dx79@$yxn$4*_dvky@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
