@@ -12,12 +12,13 @@ import iso8601
 
 class Command(BaseCommand):
     help = 'Once off moving markdown posts and save to django'
+    args = "<directory>"
 
     def add_arguments(self, parser):
-        parser.add_argument('md_files_path', nargs='+', type=str)
+        parser.add_argument('md_files_path')
 
     def handle(self, *args, **options):
-        md_files_path = options["md_files_path"]
+        md_files_path = args[0]
         # Retrieve all the .md files found in the given directory
         md_files = glob.glob("{}/*.md".format(md_files_path))
 
