@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'events',
     'mymarkdown',
     'news',
+    'raven.contrib.django.raven_compat',
 )
 
 SITE_ID = 1
