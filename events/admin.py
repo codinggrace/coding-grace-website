@@ -35,7 +35,7 @@ class LocationAdmin(admin.ModelAdmin):
 admin.site.register(Location, LocationAdmin)
 
 class MentorAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "blurb", "url", "slug")
+    list_display = ("slug", "first_name", "last_name", "blurb", "url")
     search_fields = ["first_name", "last_name"]
 admin.site.register(Mentor, MentorAdmin)
 
