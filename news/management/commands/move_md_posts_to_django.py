@@ -17,10 +17,7 @@ class Command(BaseCommand):
         parser.add_argument('md_files_path', nargs='+', type=str)
 
     def handle(self, *args, **options):
-        # Get current working directory and the md file paths given when command is run
-        cwd = os.getcwd()
-        md_files_path = os.path.join(cwd, args[0])
-
+        md_files_path = options["md_files_path"]
         # Retrieve all the .md files found in the given directory
         md_files = glob.glob("{}/*.md".format(md_files_path))
 
@@ -53,8 +50,8 @@ class Command(BaseCommand):
 
             md_news = NewsPost( title = title,
                                 published = published,
-                                author = Organiser.objects.get(pk=1),
-                                chapter = Chapter.objects.get(pk=1),
+                                author = Organiser.objects.get(slug="vicky-twomey-lee"),
+                                chapter = Chapter.objects.get(slug="dublin"),
                                 slug = slugify(title),
                                 short_description = rest[:350],
                                 content = rest
