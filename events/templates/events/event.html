@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}{{event.title}}{% endblock %}
+
+
+{% load staticfiles %}
+{% block extracss %}
+
+<link rel="stylesheet" href="{% static 'events/css/style.css' %}" />
+
+{% if tito_css %}{{tito_css|safe}}{% endif %}
+
+{% endblock %}
+
+{% load my_md %}
+
+{% block content %}
+<h1 id="events" class="text-center">{{event.title}}</h1>
+<div class="container-fluid">
+    {% if event %}
+
+        <div class="row event">
+            <div class="col-md-5 col-md-offset-1" id="description">
+                <section class="event-date-time">
+                    <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city}}
+                    <br/>
+                    <span class="glyphicon glyphicon-calendar"></span> {{event.start_datetime}} till {{event.end_datetime}}
+                </section>
+                {% if not workshop_ended %}
+                <h3><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left to reserve your place.</h3>
+                {% endif %}
+
+                <h2>Workshop details</h2>
+                {{event.description|md|safe}}
+
+
+            </div>
+            <div class="col-md-6">
+                {% if not workshop_ended %}
+                    {% if event.embed_ticket or tito_form %}
+                        {% if event.embed_ticket %}
+                            {{ event.embed_ticket|md|safe }}
+                        {% endif %}
+                        {% if tito_form %}
+                            {{ tito_form|safe }}
+                        {% endif %}
+                    {% else %}
+                        <h2><span class="glyphicon glyphicon-asterisk"></span> Tickets coming soon</h2>
+                    {% endif %}
+                {% else %}
+                    <h1 class="ended">Ticket sales have ended.</h1>
+                {% endif %}
+
+                {% if event.sponsors.all %}
+                    <h2><span class="glyphicon glyphicon-heart-empty"></span> Thank you <span class="glyphicon glyphicon-heart-empty"></span></h2>
+                    {% for sponsor in event.sponsors.all %}
+                    <h3>{{sponsor.name}} <small>for {{sponsor.what}}</small></h3>
+                    <span class="glyphicon glyphicon-link"></span> <a href="{{sponsor.url}}">{{sponsor.url}}</a><br/>
+                    {{sponsor.blurb|md|safe}}
+                    {% endfor %}
+                {% endif %}
+                <h2><span class="glyphicon glyphicon-star-empty"></span> Want to sponsor us? <span class="glyphicon glyphicon-star-empty"></span></h2>
+                <p>Contact <strong>{{event.organiser}}</strong> at <strong>{{event.organiser.email}}</strong></p>
+            </div>
+        </div>
+
+        {% if news %}
+        <div class="row" id="related-news">
+
+            <div class="col-md-10 col-md-offset-1">
+                <h1 >RELATED NEWS</h1>
+                {% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
+                <h2><a href="{{the_url}}">{{news}}</a> <small>by {{news.author}}</h2>
+                {{news.short_description|md|safe}}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if event.faq %}
+        <div class="row event" id="faq">
+            <div class="col-md-10 col-md-offset-1">
+                <h1 >FAQ</h1>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                {{event.faq|md|safe}}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row event">
+            <div class="col-md-12">
+                <section class="about-peeps">
+                    <div class="bg-image"></div>
+
+
+                    <div class="row about-peeps-desc">
+                        <div class="col-md-5 col-md-offset-1">
+                            <h2><span class="glyphicon glyphicon-user"></span> Mentors</h2>
+                            {% for mentor in event.mentors.all %}
+                            <h3>{{mentor}} {%if event.mentor.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{event.mentor.url}}">{{mentor.url}}</a></small>{% endif %}</h3>
+                            <p>{{mentor.blurb|md|safe}}</p>
+                            {% endfor %}
+                        </div>
+                         <div class="col-md-5">
+                            <section class="organiser">
+                                <h2><span class="glyphicon glyphicon-info-sign"></span> Organiser</h2>
+                                <p>{% if event.organiser.url %}<a href="{{event.organiser.url}}">{{event.organiser}}</a>{% else %}{{event.organiser}}{% endif %} {% if event.organiser.contact_number%}|| <span class="glyphicon glyphicon-phone-alt"></span> {{event.organiser.contact_number}}{% endif %} || <span class="glyphicon glyphicon-envelope"></span> {{event.organiser.email}}</p>
+                            </section>
+                            <h2>About Coding Grace</h2>
+                            <p>
+                                Coding Grace are a group of developers based in Ireland who love to code and do other geeky and not necessarily crafty activities. Some of us code full-time, or just for fun (or both). We have people who are part of other technical user groups such as Dublin ALT.NET, GameCraft, Python Ireland, Ruby Ireland and more&hellip;<br />We provide female-friendly workshops and events in an environment for developers and aspiring developers mentored by majority female instructors.<br />We aim to provide a support network for people from all backgrounds and hope our outreach will help bring those who are interested in code development together and learn from one another.
+                            </p>
+
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
+    {% else %}
+        <h1>Whoops, no event here</h1>
+    {% endif %}
+
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extrajs %}
+    {% if tito_js %}{{tito_js|safe}}{% endif %}
+{% endblock %}

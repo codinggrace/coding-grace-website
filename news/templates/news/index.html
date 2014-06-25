@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}Latest News{% endblock %}
+
+{% load my_md %}
+
+{% load staticfiles %}
+{% block extracss %}
+
+<link rel="stylesheet" href="{% static 'news/css/style.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 id="news" class="text-center">LATEST NEWS</h1>
+		</div>
+		<div class="col-md-2 news">
+			<div class="panel-group" id="accordion">
+			  	<div class="panel panel-default">
+				    <div class="panel-heading">
+						<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Chapters</a></h4>
+				    </div>
+				    <div id="collapseOne" class="panel-collapse collapse in">
+				     	<div class="panel-body side">
+				     		{% for country, cities in chapters %}
+				     		<h4>{{country|upper}}</h4>
+				    		<ul>
+				    			{% for city in cities %}
+				    			<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
+				    			{% endfor %}
+				    		</ul>
+				    		{% endfor %}
+				    	</div>
+				    </div>
+				</div>
+				<!--
+			  	<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Media</a>
+						</h4>
+					</div>
+			    	<div id="collapseTwo" class="panel-collapse collapse">
+			    		<div class="panel-body">
+				       		<ul>
+				       			<li>Press Releases</li>
+				       			<li>In the news</li>
+				       		</ul>
+			       			<div>news@codinggrace.com</div>
+			  			</div>
+			    	</div>
+			  	</div>
+			  	-->
+			</div>
+			{% include 'news/tweets.html' %}
+		</div> <!-- col-md-2 news-->
+
+		<div class="col-md-8 col-md-offset-1 news">
+		{% if all_news %}
+			{% for news in all_news %}
+			<section>
+				{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
+				<h1><a href="{{ the_url }}">{{ news.title }}</a> <small>{{ news.published }}</small></h1>
+				<p>By {{ news.author }} in {{ news.location }}</p>
+				{{ news.short_description|md|safe }}
+			</section>
+			<div class="more text-right"><a href="{{ the_url }}">Read More</a></div>
+			{% endfor %}
+		{% else %}
+			<h1><span class="glyphicon glyphicon-wrench"></span> We are working on bringing you more workshops and that means news.</h1>
+            <p>
+                Come back and check again soon.
+            </p>
+		{% endif %}
+		</div>
+
+	</div> <!-- row -->
+
+	<div class="row">
+
+	</div>
+
+	{% if all_news %}
+	<div class="row post-news">
+		<div class="col-md-12">
+			<h1 class="text-center more_stuff"><a href="all_articles">MORE ARTICLES <span class="glyphicon glyphicon-circle-arrow-right"></span></a></h1>
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

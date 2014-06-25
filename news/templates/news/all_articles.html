@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}{{page_title}}{% endblock %}
+
+{% load my_md %}
+
+{% load staticfiles %}
+{% block extracss %}
+
+<link rel="stylesheet" href="{% static 'news/css/style.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row ">
+		<div class="col-md-2">
+			<ul class="list-group">
+				<li class="list-group-item"><a href="/news/all_articles/">All News</a></li>
+				{% for country, cities in chapters %}
+				<li class="list-group-item">
+					{{country|title}}
+					<ul>
+					{% for city in cities %}
+					<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
+					{% endfor %}
+					</ul>
+				</li>
+				{% endfor %}
+			</ul>
+			{% include 'news/tweets.html' %}
+		</div>
+		<div class="col-md-8 text-center ">
+			<h1 id="news" >{{page_title}}</h1>
+			{% if news_items %}
+
+			<ul class="list-group">
+			{% for news in news_items %}
+	    		<li class="list-group-item text-left">
+	    			{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
+	    			<h2><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{ news.title }}</a> <small>{{ news.published }}</small></h2>
+	    			<p>by <a href="{{ news.author.url }}">{{ news.author }}</a> in {{ news.chapter|title }}</p>
+					{{ news.short_description }}
+	    		</li>
+	    	{% endfor %}
+	    	</ul>
+
+			<span class="step-links">
+	        {% if news_items.has_previous %}
+	            <a href="?page={{ news_items.previous_page_number }}"><span class="glyphicon glyphicon-circle-arrow-left"></span> </a>
+	        {% endif %}
+
+	        <span class="current">
+	            {% for p in news_items.paginator.page_range %}
+				<a {% if p == news_items.number %}class="highlight"{% endif %} href="?page={{ p }}">{{ p }}</a></span>
+			{% endfor %}
+	        </span>
+
+	        {% if news_items.has_next %}
+	            <a href="?page={{ news_items.next_page_number }}"> <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+	        {% endif %}
+	    	</span>
+	    	{% else %}
+	    		<h1>Whoops, news articles yet.</h1>
+	    		<p>Check other chapters for more articles. :-)</p>
+	    	{% endif %}
+		</div>
+	</div>
+
+
+</div>
+{% endblock %}
+

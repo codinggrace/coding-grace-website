@@ -1,0 +1,181 @@
+body{
+    font-family:"Helvetica", serif;
+    background-color:white;
+}
+header{
+    background-image:url('../images/codinggrace-logo.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    color:#F7A21B;
+    padding:20px 0;
+    /*background-color: red;*/
+}
+
+header .user{
+    /*background-color: red;*/
+}
+footer {
+    background-color: #E45635;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+footer a:link {color:white; text-decoration:underline;}      /* unvisited link */
+footer a:visited {color:white; text-decoration:underline;}  /* visited link */
+footer a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
+footer a:active {color:white; text-decoration:underline;}  /* selected link */
+
+.about h1{
+    color: #F7A21B;
+    font-size:96px;
+    font-weight: bold;
+}
+
+.about h2{
+    font-size: 64px;
+}
+
+.codeofconduct{
+    background-color: black;
+    color: white;
+    /*padding: 20px 0;*/
+    padding-top:40px;
+    padding-bottom:40px;
+}
+
+.codeofconduct h1{
+    color:#F7A21B;
+    font-size:72px;
+    font-weight: bold;
+}
+
+.codeofconduct h2{
+    color: #F7A21B;
+}
+.events {
+    background-color: #F7A21B;
+    padding:20px 0 30px 0;
+}
+.events h1{
+    color:white;
+    font-size:35px;
+    font-weight: bold;
+}
+.events section{
+    font-size:18px;
+    font-weight: bold;
+}
+
+.events .highlight{
+    background-color:black;
+    /*color:#7ED321;*/
+    color:white;
+}
+
+#chapter, .panel-heading.chapter {
+    background-color: #F7A21B;
+    /*color:white;*/
+}
+
+#chapter h2, #chapter h3{
+    font-weight: bold;
+}
+h1#chapters{
+    background-color: #F7A21B;
+    color:white;
+    font-size: 72px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+
+.chapter-news{background-color: #B1843F;}
+h1.chapter-news{
+
+    color:white;
+    padding:10px;
+}
+div.chapter-news{
+    opacity:0.8;
+    color:white;
+    margin-top:-10px;
+    padding:10px;
+}
+
+.chapter-news a:link, .chapter-past-events a:link{color:white;}      /* unvisited link */
+.chapter-news a:visited, .chapter-past-events a:visited{color:white;}  /* visited link */
+.chapter-news a:hover, .chapter-past-events a:hover{color:black; background-color:yellow; }  /* mouse over link */
+.chapter-news a:active, .chapter-past-events a:active{color:white; }  /* selected link */
+
+.chapter-past-events{
+    background-color: #6E4606;
+    color:white;
+}
+h1.chapter-past-events{
+    color:white;
+    padding:10px;
+    margin-top:0;
+}
+div.chapter-past-events{
+    opacity: 0.8;
+    margin-top:-10px;
+    padding:10px;
+}
+
+.other-chapters{
+    background: black;
+    color: white;
+    margin-top: 0;
+    padding: 10px;
+}
+
+div.other-chapters{
+    margin-top: -10px;
+
+    opacity: 0.8;
+}
+
+/*CODE OF CONDUCT*/
+.conduct-head{
+    background-color: #F7A21B;
+}
+.conduct-head h1{
+    color: white;
+    font-size:96px;
+    font-weight: bold;
+}
+
+#coc #full{
+    background-color: #E4E4E4;
+}
+#coc #info{
+    background-color: #F1F1F1;
+}
+
+#coc #contact_otherinfo{
+    color: white;
+}
+
+/* Background image, just add top:XXpx, see about-peeps as example */
+.bg-image{
+    position: absolute;
+    right:0;
+    bottom:0;
+    left:0;
+    background-image: url("/static/images/navy_blue.png");
+    z-index: -1;
+    height: 105%;
+    width: 100%;
+}
+.about-peeps{
+    padding-top:10px;
+    padding-bottom:10px;
+    margin-bottom:-10px;
+
+}
+
+.about-peeps .bg-image{
+    top:0;
+    margin-bottom:-20px;
+}

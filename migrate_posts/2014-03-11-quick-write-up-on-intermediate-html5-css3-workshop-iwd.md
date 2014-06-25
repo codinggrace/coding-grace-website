@@ -1,0 +1,28 @@
+title: Quick write-up on Intermediate HTML5/CSS3 Workshop #IWD
+published: 2014-03-11
+tag: IWD, workshop, blog, html5, css3
+author: Vicky Twomey-Lee
+
+<p>Thanks to all who came along, please share your creations with us (comments below).</p>
+<p><iframe frameborder="0" height="299" src="https://docs.google.com/presentation/d/1vkiC90Qc-O5KgVpCq9v7nflJRzXT0orqKGErVZAilEo/embed?start=false&amp;loop=false&amp;delayms=3000" width="480"></iframe></p>
+<p>Some notes I took from Saturday&#8217;s Workshop.</p>
+<p>
+<script src="https://hackpad.com/nus55DqFJtL.js" type="text/javascript"></script></p>
+<h5>UPCOMING EVENTS</h5>
+<ul><li>Basic Command Line: Fri 28th Mar (18:30-21:00) - <a href="http://bit.ly/1fHFRso">http://bit.ly/1fHFRso</a></li>
+<li>Introduction to Processing: Sat 15th Mar (11:00-16:00) - <a href="http://bit.ly/NV2X2W">http://bit.ly/NV2X2W</a></li>
+</ul><h5>TBA</h5>
+<ul><li>Intro to GIT: Mon Apr 14th (18:30-21:00)</li>
+<li>Game Art with Pete McNally (Havok): April</li>
+<li>Ruby on Rails: April or May</li>
+<li>Functional Programming Series starting in May</li>
+</ul><h5>Also other events that might be of interest to you:</h5>
+<ul><li>Codess @ MS Ireland: Thu 13th Mar - <a href="http://bit.ly/1g3kPmM">http://bit.ly/1g3kPmM</a></li>
+<li>PyLadies Dublin: Tue 18th Mar (18:00-21:00) - <a href="http://www.meetup.com/PyLadiesDublin/">dublin.pyladies.com</a> (monthly meetup)</li>
+<li>GDG Google’s Women TechMaker: Tue 25th Mar <br/> Intro to Python / Intro to HTML5 workshops <br/><a href="https://plus.google.com/u/0/events/c7aqo2777v3hal4ej1h11neoqlg">https://plus.google.com/u/0/events/c7aqo2777v3hal4ej1h11neoqlg</a></li>
+<li>#WeAreHere’s unFAIL unconference @ Science Gallery: Sat 26th Apr &#8212; I’ll announce when we have our website up.</li>
+<li>Raspberry Pi talk with Eben Upton @ Science Gallery: Thu 3rd Apr - <a href="http://bit.ly/1gaSOpN">http://bit.ly/1gaSOpN</a></li>
+<li>GameCraft 2nd Year Anniversary @ DIT: Sat 26th Apr <br/> Details: @globalgamecraft on Twitter</li>
+</ul><p>And I also storified some tweets about it:</p>
+<div class="storify"><iframe frameborder="no" height="750" src="//storify.com/whykay/coding-grace-intermediate-html5-css3-iwd/embed?header=false" width="100%"></iframe>
+<script src="//storify.com/whykay/coding-grace-intermediate-html5-css3-iwd.js?header=false" type="text/javascript"></script></div>

@@ -1,0 +1,127 @@
+h1#news{
+    background-color: #0060B2;
+    margin-top:0;
+    padding: 20px 0;
+    color:white;
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.news .panel-group{
+	margin-top: 20px;
+}
+
+#accordion .panel .panel-heading{
+	background-color: #FF9C00;
+	color:white;
+}
+
+.news a:link {color:white; text-decoration:underline;}      /* unvisited link */
+.news a:visited {color:white; text-decoration:underline;}  /* visited link */
+.news a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
+.news a:active {color:white; text-decoration:underline;}  /* selected link */
+
+.news h1 a:link {color:black; text-decoration:underline;}      /* unvisited link */
+.news h1 a:visited {color:black; text-decoration:underline;}  /* visited link */
+.news h1 a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
+.news h1 a:active {color:black; text-decoration:underline;}  /*selected link */
+
+div.news{
+	margin-bottom: 30px;
+}
+.news .more{
+	position: absolute;
+	right: 15px;
+	background-color: #FF9C00;
+	width:30%;
+	margin-top: 0;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	color: white;
+}
+
+
+.news time{
+	color:silver;
+	font-style: italic;
+}
+
+.news  section {
+	margin-top: 100px;
+	border-bottom: solid 2px #B26D00;
+}
+
+.news section:first-child{
+	margin-top:0;
+}
+
+.news .side{
+
+}
+
+.news .side a:link {color:black; }      /* unvisited link */
+.news .side a:visited {color:black;}  /* visited link */
+.news .side a:hover {color:black; text-decoration:none;}  /* mouse over link */
+.news .side a:active {color:black;}  /* selected link */
+
+.post-news {
+	background-color:#FF9C00;
+}
+
+.post-news {
+	margin-top:0;
+}
+.post-news h1{
+	background-color:#FF9C00;
+	color: white;
+}
+.post-news section{
+	background-color: white;
+	/*border-bottom: 1px solid #FF9C00;*/
+	padding: 10px;
+	/*margin-top: 10px;*/
+	border-bottom: 10px solid #B26D00;
+}
+.twitter-timeline{
+	margin-top: 10px;
+}
+
+.highlight{
+	background-color: #428bca;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+a.highlight:link {color:white; }      /* unvisited link */
+a.highlight:visited {color:white;}  /* visited link */
+a.highlight:hover {color:yellow; text-decoration:none;}  /* mouse over link */
+a.highlight:active {color:white;}  /* selected link */
+
+.article h1{
+	background-color: #FF9C00;
+	padding: 20px;
+	color: white;
+}
+
+
+.more_stuff a:link {color:white; }      /* unvisited link */
+.more_stuff a:visited {color:white;}  /* visited link */
+.more_stuff a:hover {color:yellow; text-decoration:none;}  /* mouse over link */
+.more_stuff a:active {color:white;}  /* selected link */
+
+/*.article p{ padding: 10px;}*/
+
+.article .post-author{
+	background-color: #FFBA4C;
+	padding: 10px;
+	margin-top: -10px;
+	font-weight: bold;
+	color:white;
+}
+.article .post-author small{
+	font-style: italic;
+}
+#disqus{
+	padding-bottom: 10px;
+	border-bottom: 20px solid #B26D00;
+}

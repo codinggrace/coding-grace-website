@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Coding Grace Chapters{% endblock %}
+
+
+{% load staticfiles %}
+{% block extracss %}
+
+<!-- <link rel="stylesheet" href="{% static 'events/css/style.css' %}" /> -->
+
+{% endblock %}
+
+{% load my_md %}
+
+{% block content %}
+<h1 id="chapters" class="text-center">CHAPTERS</h1>
+<div class="container">
+
+	<div class="row">
+		<div class="col-mod-5">
+			<div class="jumbotron">
+			 	<h1>Want to start a local chapter?</h1>
+				<p>
+			  		Interested in providing events to a diverse community, and like to be part of Coding Grace and make a differece?
+				</p>
+				<p>Drop Vicky an email, we are very happy to have a chat with you and see how we can make this happen.</p>
+			  <p><a href="mailto:contact@codinggrace.com" class="btn btn-primary btn-lg" role="button">contact@codinggrace.com</a></p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Current Chapters</h1>
+			{% for country, cities in country_chapters %}
+			<div class="panel panel-default">
+				<div class="panel-heading chapter">
+					<h3 class="panel-title">{{ country|title }}</h3>
+				</div>
+				<div class="panel-body">
+					{% for city in cities %}
+						{% url 'chapter' city as the_url %}
+						<a href="{{the_url}}">{{ city|title }}</a>
+
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+
+
+		</div>
+	</div>
+</div>
+{% endblock %}

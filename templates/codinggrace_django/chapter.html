@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}{{ chapter|capfirst }} Coding Grace{% endblock %}
+
+
+{% load staticfiles %}
+{% block extracss %}
+
+{% endblock %}
+
+{% load my_md %}
+
+{% block content %}
+<h1 id="chapters" class="text-center">{{chapter|upper}}</h1>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+        {% if chapter.organisers %}
+            <div class="jumbotron">
+                <h1>{{ chapter|upper }}</h1>
+                <p>
+                    <span class="glyphicon glyphicon-user"></span>
+                    {% for organiser in chapter.organisers.all %}
+                        <a href="{{organiser.url}}">{{organiser}}</a>
+                    {% endfor %}
+                </p>
+                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> {{chapter.email}}</a></p>
+            </div>
+        {% else %}
+            <div class="jumbotron">
+                <h1>{{ chapter|upper }}</h1>
+                <p>
+                    Interested in helping out? Contact us for further info.
+                </p>
+                <p><a href="mailto:contact@codinggrace.com" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> contact@codinggrace.com</a></p>
+            </div>
+        {% endif %}
+        </div>
+        <div class="col-md-6">
+            <h1>Upcoming Events</h1>
+            {% if current_upcoming_events %}
+                {% for event in current_upcoming_events %}
+                {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
+                <h3><a href="{{the_url}}">{{ event.title }}</a> <small>{{ event.start_datetime}} </small></h3>
+                <p>{{event.location.venue}}, {{event.location.address1}}, {% if event.location.address2 %}{{event.location.address2}}{% endif %}</p>
+                {% endfor %}
+            {% else %}
+                <h3><span class="glyphicon glyphicon-asterisk"></span> Events coming soon.</span></h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% if news_post_objects %}
+<h1 class="text-center chapter-news" id="chapter-news">LATEST CHAPTER NEWS</h1>
+<div class="container-fluid chapter-news">
+    <div class="row">
+         <div class="col-md-10 col-md-offset-1">
+        {% for news in news_post_objects %}
+            {% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
+            <h1><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{news.title}}</a></h1>
+
+            {{news.short_description|md|safe}}
+        {% endfor %}
+         </div>
+    </div>
+</div>
+{% endif %}
+
+{% if past_events %}
+<h1 class="text-center chapter-past-events" id="chapter-past-events">PAST EVENTS</h1>
+<div class="container-fluid chapter-past-events">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            {% for event in past_events %}
+            {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
+            <h1><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{event.title}}</span></a></h1>
+            {{event.short_description|md|safe}}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<h1 class="text-center other-chapters" id="other-chapters">OTHER CHAPTERS</h1>
+<div class="container-fluid other-chapters">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+        {% for country, cities in country_chapters %}
+            <h3>{{country|title}}</h3>
+            {% for city in cities %}
+            <a href="/chapters/{{city}}/">{{city|title}}</a>
+            {% endfor %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
