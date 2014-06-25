@@ -97,7 +97,7 @@
                         <div class="col-md-5 col-md-offset-1">
                             <h2><span class="glyphicon glyphicon-user"></span> Mentors</h2>
                             {% for mentor in event.mentors.all %}
-                            <h3>{{mentor}} {%if event.mentor.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{event.mentor.url}}">{{mentor.url}}</a></small>{% endif %}</h3>
+                            <h3>{{mentor.first_name}} {{mentor.last_name}} {%if event.mentor.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{event.mentor.url}}">{{mentor.url}}</a></small>{% endif %}</h3>
                             <p>{{mentor.blurb|md|safe}}</p>
                             {% endfor %}
                         </div>
