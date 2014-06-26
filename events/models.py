@@ -67,6 +67,9 @@ class Mentor(models.Model):
     url = models.URLField(blank=True, max_length=250, null=True, help_text="If not an organiser, fill in this")
     slug = models.SlugField(null=True, help_text="E.G. firstname-lastname")
 
+    class Meta:
+        ordering = ["slug"]
+
     def __str__(self):
         return self.slug
 
