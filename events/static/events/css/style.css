@@ -46,6 +46,13 @@ h1#events, h1#past-events{
     background-color: #F6F6F6;
     color:black;
 }
+
+.event#faq a:link {color:black; text-decoration:underline;}
+.event#faq a:visited {color:black; text-decoration:underline;}
+.event#faq a:hover {color:black; background-color:yellow; text-decoration:underline;}
+.event#faq a:active {color:black; text-decoration:underline;}
+
+
 .events {
     margin-top:-10px;
 }
@@ -105,10 +112,10 @@ h1#past-events{
     color:white;
 }
 
-.about-peeps-desc a:link, .event#faq a:link, .organiser a:link, #description .event-date-time a:link {color:white; text-decoration:underline;}      /* unvisited link */
-.about-peeps-desc a:visited, .event#faq a:visited, .organiser a:visited, #description .event-date-time a:visited {color:white; text-decoration:underline;}  /* visited link */
-.about-peeps-desc a:hover, .event#faq a:hover, .organiser a:hover, #description .event-date-time a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
-.about-peeps-desc a:active, .event#faq a:active, .organiser a:active, #description .event-date-time a:active {color:white; text-decoration:underline;}  /* selected link */
+.about-peeps-desc a:link, .organiser a:link, #description .event-date-time a:link {color:white; text-decoration:underline;}      /* unvisited link */
+.about-peeps-desc a:visited, .organiser a:visited, #description .event-date-time a:visited {color:white; text-decoration:underline;}  /* visited link */
+.about-peeps-desc a:hover, .organiser a:hover, #description .event-date-time a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
+.about-peeps-desc a:active, .organiser a:active, #description .event-date-time a:active {color:white; text-decoration:underline;}  /* selected link */
 
 .organiser{
     color: white;
