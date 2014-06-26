@@ -16,7 +16,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"></div>
-            <div class="col-md-3 ">
+            <div class="col-md-3 col-xs-4 ">
                 <ul class="nav nav-pills">
                     <li {% if active == "home" %}class="active"{% endif %}><a href="/">Home</a></li>
                     <li {% if active == "about" %}class="active"{% endif %}><a href="/#about">About</a></li>
@@ -28,7 +28,7 @@
             </div>
             <div class="col-md-2 col-md-offset-3 user">
             {% load account %}
-            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>){% else %} <a href="/accounts/login">Login</a>{% endif %}
+            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>){% endif %}
             {% load socialaccount %}
             </div>
         </div>
