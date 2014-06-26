@@ -64,6 +64,17 @@
             </div>
         </div>
 
+        {% if event.faq %}
+        <div class="row event" id="faq">
+            <div class="col-md-10 col-md-offset-1">
+                <h1 >FAQ</h1>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                {{event.faq|md|safe}}
+            </div>
+        </div>
+        {% endif %}
+
         {% if news %}
         <div class="row" id="related-news">
 
@@ -72,17 +83,6 @@
                 {% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
                 <h2><a href="{{the_url}}">{{news}}</a> <small>by {{news.author}}</h2>
                 {{news.short_description|md|safe}}
-            </div>
-        </div>
-        {% endif %}
-
-        {% if event.faq %}
-        <div class="row event" id="faq">
-            <div class="col-md-10 col-md-offset-1">
-                <h1 >FAQ</h1>
-            </div>
-            <div class="col-md-10 col-md-offset-1">
-                {{event.faq|md|safe}}
             </div>
         </div>
         {% endif %}
