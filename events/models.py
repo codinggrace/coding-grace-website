@@ -102,7 +102,7 @@ class Event(models.Model):
     slug = models.SlugField(help_text="E.G. this-this-an-event")
 
     def __str__(self):
-        return self.slug
+        return self.title
 
     def current_event(self):
         return self.start_datetime >= timezone.now() - datetime.timedelta(days=1)
