@@ -58,7 +58,7 @@ def event(request, slug, event_id):
     # If the workshop has ended, get its related news article if it exists
     # if workshop_ended:
     try:
-        context["news"] = NewsPost.objects.get(event__pk=event_id)
+        context["news"] = NewsPost.objects.filter(event__pk=event_id)
     except NewsPost.DoesNotExist:
 
         pass

@@ -80,9 +80,12 @@
 
             <div class="col-md-10 col-md-offset-1">
                 <h1 >RELATED NEWS</h1>
-                {% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
-                <h2><a href="{{the_url}}">{{news}}</a> <small>by {{news.author}}</h2>
-                {{news.short_description|md|safe}}
+                {% for news_item in news %}
+                    {% url 'news:news_article' slug=news_item.slug year=news_item.published.year month=news_item.published.month day=news_item.published.day as the_url %}
+                    <h2><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{news_item}}</a> <small>by {{news_item.author}}</h2>
+                    {{news_item.short_description|md|safe}}
+                {% endfor %}
+
             </div>
         </div>
         {% endif %}
