@@ -101,7 +101,7 @@
                                 <h3>{{mentor.user.first_name}} {{mentor.user.last_name}} {%if mentor.user.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{mentor.user.url}}">{{mentor.user.url}}</a></small>{% endif %}</h3>
                                 <p>{{mentor.user.blurb|md|safe}}</p>
                             {% else %}
-                                <h3>{{mentor.first_name}} {{mentor.last_name}} {%if event.mentor.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{event.mentor.url}}">{{mentor.url}}</a></small>{% endif %}</h3>
+                                <h3>{{mentor.first_name}} {{mentor.last_name}} {% if mentor.url %}<small><span class="glyphicon glyphicon-link"></span> <a href="{{mentor.url}}">{{mentor.url}}</a></small>{% endif %}</h3>
                                 <p>{{mentor.blurb|md|safe}}</p>
                             {% endif %}
 
