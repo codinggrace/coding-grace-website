@@ -4,10 +4,6 @@ from django.views.generic import TemplateView
 
 admin.autodiscover()
 
-def disqus_test(request):
-    from django.shortcuts import render
-    return render(request, "disqus_test.html")
-
 urlpatterns = patterns('',
     url(r'^accounts/profile/$', TemplateView.as_view(template_name='codinggrace_django/profile.html'), name="account_profile"),
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
@@ -24,5 +20,4 @@ urlpatterns = patterns('',
     url(r"^news/", include("news.urls", namespace="news")),
     url(r'^admin/', include(admin.site.urls)),
 
-    url(r"^disqus-test/", disqus_test),
 )
