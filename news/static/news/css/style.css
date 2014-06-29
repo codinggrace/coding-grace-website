@@ -125,3 +125,7 @@ a.highlight:active {color:white;}  /* selected link */
 	padding-bottom: 10px;
 	border-bottom: 20px solid #B26D00;
 }
+
+#disqus h1{
+background-color: #A16609;
+}
