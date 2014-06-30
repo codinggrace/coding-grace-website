@@ -75,9 +75,14 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
 
 #chapter, .panel-heading.chapter {
     background-color: #F7A21B;
-    /*color:white;*/
+    color:white;
 }
 
+/*#chapter h1{
+    font-size: 72px;
+    font-weight: bold;
+    padding: 10px;
+}*/
 #chapter h2, #chapter h3{
     font-weight: bold;
 }
@@ -89,7 +94,15 @@ h1#chapters{
     padding: 10px;
 }
 
+#chapter .thumbnail{
+    margin-top: 30px;
+    height:350px;
+    padding-bottom: 20px;
+}
 
+#chapter .thumbnail .btn{
+    /*margin-top:10px;*/
+}
 .chapter-news{background-color: #B1843F;}
 h1.chapter-news{
 
