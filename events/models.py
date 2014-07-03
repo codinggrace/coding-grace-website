@@ -20,7 +20,7 @@ class City(models.Model):
 
 class Location(models.Model):
     venue = models.CharField(max_length=250)
-    address1 = models.CharField(max_length=250)
+    address1 = models.CharField(blank=True, max_length=250)
     address2 = models.CharField(blank=True, max_length=250)
     city =models.ForeignKey(City, null=True)
     country = models.ForeignKey(Country, null=True)
@@ -63,7 +63,7 @@ class Mentor(models.Model):
     user = models.ForeignKey(Organiser, blank=True, null=True, help_text="Only choos this if mentor is an organiser also. No need to fill rest of form.")
     first_name = models.CharField(max_length=250, blank=True, null=True, help_text="If not an organiser, fill in this")
     last_name = models.CharField(max_length=250, blank=True, null=True, help_text="If not an organiser, fill in this")
-    blurb = models.TextField(blank=True, null=True, help_text="If not an organiser, fill in this")
+    blurb = models.TextField(blank=True, null=True, help_text="If not an organiser, fill in this. Markdown text supported.")
     url = models.URLField(blank=True, max_length=250, null=True, help_text="If not an organiser, fill in this")
     slug = models.SlugField(null=True, help_text="E.G. firstname-lastname")
 
@@ -76,7 +76,7 @@ class Mentor(models.Model):
 class Sponsor(models.Model):
     name = models.CharField(null=True, max_length=250)
     url = models.URLField(null=True)
-    blurb = models.TextField(null=True)
+    blurb = models.TextField(null=True, help_text="Markdown text")
     what = models.CharField(null=True, max_length=250)
     slug = models.SlugField(null=True, help_text="E.G. microsoft-ireland")
 
@@ -86,9 +86,9 @@ class Sponsor(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=250)
     level_type = models.ManyToManyField(Levels)
-    short_description = models.TextField(null=True)
-    description = models.TextField()
-    faq = models.TextField(null=True, blank=True, help_text="Optional")
+    short_description = models.TextField(null=True, help_text="Markdown text")
+    description = models.TextField(help_text="Markdown text")
+    faq = models.TextField(null=True, blank=True, help_text="Markdown text. This field is optional.")
     pub_datetime = models.DateTimeField(auto_now=True, auto_now_add=True)
     start_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
     end_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
