@@ -21,7 +21,7 @@ def chapter(request, chapter):
 	chapter_objects = Event.objects.filter(location__city__name=chapter)
 
 	# Get chapter's upcoming events
-	current_upcoming_events = chapter_objects.filter(start_datetime__gte=now()).order_by('start_datetime').reverse()
+	current_upcoming_events = chapter_objects.filter(start_datetime__gte=now()).order_by('start_datetime')
 	context["current_upcoming_events"] = current_upcoming_events
 
 	# Get past events for this chapter
