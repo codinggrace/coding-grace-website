@@ -102,9 +102,10 @@ class Event(models.Model):
     slug = models.SlugField(help_text="E.G. this-this-an-event")
 
     def __str__(self):
-        return self.title
+        return "{} - {}".format(self.title, self.start_datetime)
 
     def current_event(self):
         return self.start_datetime >= timezone.now() - datetime.timedelta(days=1)
 
-
+    class Meta:
+        ordering = ["-start_datetime"]

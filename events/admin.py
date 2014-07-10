@@ -19,6 +19,7 @@ class EventAdmin(admin.ModelAdmin):
     list_filter = ["start_datetime"]
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ["title", "description"]
+    raw_id_fields = ("location", "organiser")
 admin.site.register(Event, EventAdmin)
 
 class LevelsAdmin(admin.ModelAdmin):
