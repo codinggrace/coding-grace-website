@@ -8,7 +8,7 @@ from news.models import NewsPost
 # Create your views here.
 def index(request):
     context = {"active":"news"}
-    news_objects = NewsPost.objects.all()
+    news_objects = NewsPost.objects.filter(is_published=True)
     all_news = news_objects.order_by('published').reverse()[:5]
     context["all_news"] = all_news
     context["chapters"] = get_chapters()
@@ -17,7 +17,7 @@ def index(request):
 
 def news(request, slug, year, month, day):
 
-    article = NewsPost.objects.filter(slug=slug).filter(published__year=year).filter(published__month=month).filter(published__day=day)
+    article = NewsPost.objects.filter(slug=slug).filter(published__year=year).filter(published__month=month).filter(published__day=day).filter(is_published=True)
     if article:
         context = {"article":article[0]}
     else:
@@ -27,7 +27,7 @@ def news(request, slug, year, month, day):
 
 def all_articles(request):
     context = {}
-    articles = NewsPost.objects.all().order_by('published').reverse()
+    articles = NewsPost.objects.filter(is_published=True)
     paginator = Paginator(articles, 5)
     page = request.GET.get('page')
     try:
@@ -47,7 +47,7 @@ def all_articles(request):
 
 def all_articles_chapter(request, chapter):
     context = {}
-    articles = NewsPost.objects.filter(chapter__city__name=chapter).order_by('published').reverse()
+    articles = NewsPost.objects.filter(chapter__city__name=chapter).filter(is_published=True)
     paginator = Paginator(articles, 5)
     page = request.GET.get('page')
     try:

@@ -12,6 +12,10 @@ class NewsPost(models.Model):
     short_description = models.TextField(null=True)
     content = models.TextField(null=True)
     event = models.ForeignKey(Event, null=True, blank=True)
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ["-published"]
