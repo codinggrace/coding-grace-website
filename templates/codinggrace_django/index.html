@@ -10,7 +10,7 @@
         {% for event in events_list %}
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <h1>{{event.title}} &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left</h1>
+            <h1><a href="">{{event.title}}</a> &nbsp;&nbsp;<span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left</h1>
             <div class="row">
                 <section class="col-md-8">
                     <span class="glyphicon glyphicon-map-marker"></span> <a href="/chapters/{{event.location.city}}">{{event.location.city|title}}</a> <span class="glyphicon glyphicon-play"></span>  <span class="glyphicon glyphicon-calendar"></span> <span class="">{{event.start_datetime}}</span>  <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-euro"></span><span class="">{{event.cost}}</span>

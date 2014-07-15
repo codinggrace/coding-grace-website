@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 from django.utils import timezone
 
 from events.models import Chapter, Event, Organiser
@@ -14,8 +15,11 @@ class NewsPost(models.Model):
     event = models.ForeignKey(Event, null=True, blank=True)
     is_published = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ["-published"]
+
     def __str__(self):
         return self.title
 
-    class Meta:
-        ordering = ["-published"]
+    def get_absolute_url(self):
+        return reverse("news:news_article", kwargs={"slug": self.slug, "year": self.published.year, "month": self.published.month, "day": self.published.day})
