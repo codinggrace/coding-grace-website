@@ -22,7 +22,7 @@
         <div class="row event">
             <div class="col-md-5 col-md-offset-1" id="description">
                 <section class="event-date-time">
-                    <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city}}
+                    <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city|capfirst}}
                     <br/>
                     <span class="glyphicon glyphicon-calendar"></span> {{event.start_datetime}} till {{event.end_datetime}}
                 </section>
