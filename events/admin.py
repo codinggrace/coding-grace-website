@@ -1,5 +1,5 @@
 from django.contrib import admin
-from events.models import Chapter, City, Country, Event, Levels, Location, Mentor, Organiser, Sponsor
+from events.models import Chapter, City, Country, Event, Levels, Location, Mentor, Organiser, Sponsor, Sponsorship
 
 # Register your models here.
 class ChapterAdmin(admin.ModelAdmin):
@@ -46,6 +46,10 @@ class OrganiserAdmin(admin.ModelAdmin):
 admin.site.register(Organiser, OrganiserAdmin)
 
 class SponsorAdmin(admin.ModelAdmin):
-    list_display = ("name", "url", "blurb", "what", "slug")
+    list_display = ("name", "url", "blurb", "slug")
     prepopulated_fields = {"slug": ("name",)}
 admin.site.register(Sponsor, SponsorAdmin)
+
+class SponsorshipAdmin(admin.ModelAdmin):
+    list_display = ("sponsor", "sponsorship_type")
+admin.site.register(Sponsorship, SponsorshipAdmin)

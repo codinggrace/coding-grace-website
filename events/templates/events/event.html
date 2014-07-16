@@ -53,12 +53,12 @@
                     <h1 class="ended">Ticket sales have ended.</h1>
                 {% endif %}
 
-                {% if event.sponsors.all %}
+                {% if event.sponsorship.all %}
                     <h2><span class="glyphicon glyphicon-heart-empty"></span> Thank you <span class="glyphicon glyphicon-heart-empty"></span></h2>
-                    {% for sponsor in event.sponsors.all %}
-                    <h3>{{sponsor.name}} <small>for {{sponsor.what}}</small></h3>
-                    <span class="glyphicon glyphicon-link"></span> <a href="{{sponsor.url}}">{{sponsor.url}}</a><br/>
-                    {{sponsor.blurb|md|safe}}
+                    {% for s in event.sponsorship.all %}
+                    <h3>{{s.sponsor.name}} <small>for {{s.sponsorship_type}}</small></h3>
+                    <span class="glyphicon glyphicon-link"></span> <a href="{{s.sponsor.url}}">{{s.sponsor.url}}</a><br/>
+                    {{s.sponsor.blurb|md|safe}}
                     {% endfor %}
                 {% endif %}
                 <h2><span class="glyphicon glyphicon-star-empty"></span> Want to sponsor us? <span class="glyphicon glyphicon-star-empty"></span></h2>

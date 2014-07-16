@@ -77,11 +77,18 @@ class Sponsor(models.Model):
     name = models.CharField(null=True, max_length=250)
     url = models.URLField(null=True)
     blurb = models.TextField(null=True, help_text="Markdown text")
-    what = models.CharField(null=True, max_length=250)
+    #what = models.CharField(null=True, max_length=250) # To be removed
     slug = models.SlugField(null=True, help_text="E.G. microsoft-ireland")
 
     def __str__(self):
         return self.slug
+
+class Sponsorship(models.Model):
+    sponsor = models.ForeignKey(Sponsor, null=True)
+    sponsorship_type = models.CharField(null=True, max_length=250, help_text="E.G. Food")
+
+    def __str__(self):
+        return "{} - {}".format(self.sponsor.name, self.sponsorship_type)
 
 class Event(models.Model):
     title = models.CharField(max_length=250)
@@ -95,7 +102,8 @@ class Event(models.Model):
     location = models.ForeignKey(Location)
     organiser = models.ForeignKey(Organiser)
     mentors = models.ManyToManyField(Mentor, null=True)
-    sponsors = models.ManyToManyField(Sponsor, blank=True)
+    #sponsors = models.ManyToManyField(Sponsor, blank=True) # To be removed
+    sponsorship = models.ManyToManyField(Sponsorship, blank=True)
     cost = models.DecimalField(null=True, decimal_places=2, max_digits=6, help_text="E.G. 10.00")
     embed_ticket = models.TextField(null=True, blank=True, help_text="Just paste in the html embed ticket, or just place instructions in HTML/Markdown here to display in ticket section.")
     event_url = models.URLField()
