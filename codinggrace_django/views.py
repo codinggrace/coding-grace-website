@@ -47,6 +47,9 @@ def chapter(request, chapter):
 
 	return render(request, 'codinggrace_django/chapter.html', context)
 
+def colophon(request):
+    return render(request, 'codinggrace_django/colophon.html', {})
+
 def news_redirect(request, year, month, day, slug):
     # return redirect('news', year=year, month=month, day=day, slug=slug)
     special_redirects = ["introduction-to-f-sharp-with-phil-trelford"]

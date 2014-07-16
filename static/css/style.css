@@ -44,7 +44,7 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     padding-bottom:40px;
 }
 
-.codeofconduct h1{
+.codeofconduct h1, #colophon h1{
     color:#F7A21B;
     font-size:72px;
     font-weight: bold;
@@ -53,6 +53,25 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
 .codeofconduct h2{
     color: #F7A21B;
 }
+
+#colophon {
+    /*background-color: #F7A21B;*/
+}
+#colophon h1 {
+    color: white;
+    background-color: #F7A21B;
+    padding: 20px 0;
+}
+
+#colophon h2{
+    color: black;
+    background-color: rgba(247, 162, 27, 0.7);
+    padding: 15px;
+}
+#colophon section{
+    font-size: 24px;
+}
+
 .events {
     background-color: #F7A21B;
     padding:20px 0 30px 0;
