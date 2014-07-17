@@ -56,9 +56,11 @@
                 {% if event.sponsorship.all %}
                     <h2><span class="glyphicon glyphicon-heart-empty"></span> Thank you <span class="glyphicon glyphicon-heart-empty"></span></h2>
                     {% for s in event.sponsorship.all %}
-                    <h3>{{s.sponsor.name}} <small>for {{s.sponsorship_type}}</small></h3>
-                    <span class="glyphicon glyphicon-link"></span> <a href="{{s.sponsor.url}}">{{s.sponsor.url}}</a><br/>
+                    <h2>{{s.sponsor.name}} <small>for {{s.sponsorship_type}}</small></h2>
+
                     {{s.sponsor.blurb|md|safe}}
+
+                    <p><span class="glyphicon glyphicon-link"></span> <a href="{{s.sponsor.url}}">{{s.sponsor.url}}</a></p>
                     {% endfor %}
                 {% endif %}
                 <h2><span class="glyphicon glyphicon-star-empty"></span> Want to sponsor us? <span class="glyphicon glyphicon-star-empty"></span></h2>
