@@ -30,8 +30,8 @@
                 <h3><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left to reserve your place.</h3>
                 {% endif %}
 
-                <h2>Workshop details</h2>
-                <h4>EUR{{event.cost}}</h4>
+                <h2>Workshop details <small><span class="glyphicon glyphicon-tag"></span> {% for level in event.level_type.all %}{{ level }}{% endfor %}</small></h2>
+                <h4><span class="glyphicon glyphicon-euro"></span> {{event.cost}}</h4>
 
                 {{event.description|md|safe}}
 
