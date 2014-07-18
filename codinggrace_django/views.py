@@ -50,6 +50,9 @@ def chapter(request, chapter):
 def colophon(request):
     return render(request, 'codinggrace_django/colophon.html', {})
 
+def resources(request):
+    return render(request, 'codinggrace_django/resources.html', {})
+
 def news_redirect(request, year, month, day, slug):
     # return redirect('news', year=year, month=month, day=day, slug=slug)
     special_redirects = ["introduction-to-f-sharp-with-phil-trelford"]

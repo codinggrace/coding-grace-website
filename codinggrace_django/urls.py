@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^chapters/ireland/dublin/posts/(?P<year>\d{4})-(?P<month>\d+)-(?P<day>\d+)-(?P<slug>[a-zA-Z0-9_-]+)/$', 'codinggrace_django.views.news_redirect', name="news_redirect"),
     url(r'^codeofconduct/$', 'codinggrace_django.views.codeofconduct', name="codeofconduct"),
     url(r'^colophon/$', 'codinggrace_django.views.colophon', name="colophon"),
+    url(r'^resources/$', 'codinggrace_django.views.resources', name="resources"),
 
     # url(r'^blog/', include('blog.urls')),
     url(r"^events/", include("events.urls", namespace="events")),

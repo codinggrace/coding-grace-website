@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Handy Resources{% endblock %}
+
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Table of Contents</h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="#general">General</a>
+                        <ul>
+                            <li><a href="#commandline">Command line</a></li>
+                            <li><a href="#ide">IDEs and Text Editors</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item"><a href="#sc">Source Control</a>
+                        <ul>
+                            <li><a href="#git">Git</a></li>
+                            <li><a href="#hg">Mercurial</a></li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item"><a href="#html5-css3">HTML5 and CSS3</a>
+                        <ul>
+                            <li><a href="#html5">HTML5</a></li>
+                            <li><a href="#css3">CSS3</a></li>
+                            <li><a href="#python">Python</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+        {% include "codinggrace_django/resources/general.html" %}
+        {% include "codinggrace_django/resources/source_control.html" %}
+        {% include "codinggrace_django/resources/html_resources.html" %}
+        {% include "codinggrace_django/resources/python.html" %}
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            {% include "disqus_common.html" %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
