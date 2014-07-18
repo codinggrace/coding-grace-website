@@ -14,7 +14,7 @@
             <h1><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left</h1>
             <div class="row">
                 <section class="col-md-8">
-                    {% for level in event.level_type.all %}{{ level }}{% endfor %} <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-map-marker"></span> <a href="/chapters/{{event.location.city}}">{{event.location.city|title}}</a> <span class="glyphicon glyphicon-play"></span>  <span class="glyphicon glyphicon-calendar"></span> <span class="">{{event.start_datetime}}</span>  <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-euro"></span><span class="">{{event.cost}}</span>
+                    {% for level in event.level_type.all %}{{ level }}{% endfor %} <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-map-marker"></span> <a href="/chapters/{{event.location.city}}">{{event.location.city|title}}</a> <span class="glyphicon glyphicon-play"></span>  <span class="glyphicon glyphicon-calendar"></span> <span class="">{{event.start_datetime|date:"D, dS M Y"}} {{ event.start_datetime|time:"H:i e" }}</span>  <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-euro"></span><span class="">{{event.cost}}</span>
                 </section>
             </div>
             <div class="row">

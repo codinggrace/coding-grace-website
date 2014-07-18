@@ -24,7 +24,7 @@
                 <section class="event-date-time">
                     <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city|capfirst}}
                     <br/>
-                    <span class="glyphicon glyphicon-calendar"></span> {{event.start_datetime}} till {{event.end_datetime}}
+                    <span class="glyphicon glyphicon-calendar"></span> {{event.start_datetime|date:"D, dS M Y"}} {{ event.start_datetime|time:"H:i" }} till {{ event.end_datetime|time:"H:i" }}
                 </section>
                 {% if not workshop_ended %}
                 <h3><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left to reserve your place.</h3>
