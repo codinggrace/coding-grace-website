@@ -52,6 +52,10 @@ h1#events, h1#past-events{
 .event#faq a:hover {color:black; background-color:yellow; text-decoration:underline;}
 .event#faq a:active {color:black; text-decoration:underline;}
 
+.events h2 a:link {color:black; text-decoration:underline;}
+.events h2 a:visited {color:black; text-decoration:underline;}
+.events h2 a:hover {color:black; background-color:yellow; text-decoration:underline;}
+.events h2 a:active {color:black; text-decoration:underline;}
 
 .events {
     margin-top:-10px;
