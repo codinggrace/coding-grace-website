@@ -11,14 +11,14 @@
 {% load my_md %}
 
 {% block content %}
-<h1 id="chapters" class="text-center">{{chapter|upper}}</h1>
+<h1 id="chapters" class="text-center tk-cooper-black-std">{{chapter|upper}}</h1>
 <div class="container">
 
     <div class="row">
         <div class="col-md-6">
         {% if chapter.organisers %}
             <div class="jumbotron">
-                <h1>{{ chapter|upper }}</h1>
+                <h1 class="tk-cooper-black-std">{{ chapter|upper }}</h1>
                 <p>
                     <span class="glyphicon glyphicon-user"></span>
                     {% for organiser in chapter.organisers.all %}
@@ -29,7 +29,7 @@
             </div>
         {% else %}
             <div class="jumbotron">
-                <h1>{{ chapter|upper }}</h1>
+                <h1 class="tk-cooper-black-std">{{ chapter|upper }}</h1>
                 <p>
                     Interested in helping out? Contact us for further info.
                 </p>
@@ -38,7 +38,7 @@
         {% endif %}
         </div>
         <div class="col-md-6">
-            <h1>Upcoming Events</h1>
+            <h1 class="tk-cooper-black-std">Upcoming Events</h1>
             {% if current_upcoming_events %}
                 {% for event in current_upcoming_events %}
                 {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
@@ -53,7 +53,7 @@
 </div>
 
 {% if news_post_objects %}
-<h1 class="text-center chapter-news" id="chapter-news">LATEST CHAPTER NEWS</h1>
+<h1 class="text-center chapter-news tk-cooper-black-std" id="chapter-news">LATEST CHAPTER NEWS</h1>
 <div class="container-fluid chapter-news">
     <div class="row">
          <div class="col-md-10 col-md-offset-1">
@@ -69,7 +69,7 @@
 {% endif %}
 
 {% if past_events %}
-<h1 class="text-center chapter-past-events" id="chapter-past-events">PAST EVENTS</h1>
+<h1 class="text-center chapter-past-events tk-cooper-black-std" id="chapter-past-events">PAST EVENTS</h1>
 <div class="container-fluid chapter-past-events">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -83,7 +83,7 @@
 </div>
 {% endif %}
 
-<h1 class="text-center other-chapters" id="other-chapters">OTHER CHAPTERS</h1>
+<h1 class="text-center other-chapters tk-cooper-black-std" id="other-chapters">OTHER CHAPTERS</h1>
 <div class="container-fluid other-chapters">
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
