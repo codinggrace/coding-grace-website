@@ -15,10 +15,10 @@
 	<div class="row ">
 		<div class="col-md-2">
 			<ul class="list-group">
-				<li class="list-group-item"><a href="/news/all_articles/">All News</a></li>
+				<li class="list-group-item"><a href="/news/all_articles/"><h3 class="tk-cooper-black-std">All News</h3></a></li>
 				{% for country, cities in chapters %}
 				<li class="list-group-item">
-					{{country|title}}
+					<h4 class="tk-cooper-black-std">{{country|title}}</h4>
 					<ul>
 					{% for city in cities %}
 					<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
@@ -37,7 +37,7 @@
 			{% for news in news_items %}
 	    		<li class="list-group-item text-left">
 	    			{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
-	    			<h2><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{ news.title }}</a> <small>{{ news.published }}</small></h2>
+	    			<h2 class="tk-cooper-black-std"><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{ news.title }}</a> <small>{{ news.published }}</small></h2>
 	    			<p>by <a href="{{ news.author.url }}">{{ news.author }}</a> in {{ news.chapter|title }}</p>
 					{{ news.short_description }}
 	    		</li>
@@ -60,7 +60,7 @@
 	        {% endif %}
 	    	</span>
 	    	{% else %}
-	    		<h1>Whoops, news articles yet.</h1>
+	    		<h1 class="tk-cooper-black-std">Whoops, news articles yet.</h1>
 	    		<p>Check other chapters for more articles. :-)</p>
 	    	{% endif %}
 		</div>

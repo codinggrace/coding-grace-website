@@ -20,12 +20,12 @@
 			<div class="panel-group" id="accordion">
 			  	<div class="panel panel-default">
 				    <div class="panel-heading">
-						<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Chapters</a></h4>
+						<h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><h3 class="tk-cooper-black-std">Chapters</h3></a></h4>
 				    </div>
 				    <div id="collapseOne" class="panel-collapse collapse in">
 				     	<div class="panel-body side">
 				     		{% for country, cities in chapters %}
-				     		<h4>{{country|upper}}</h4>
+				     		<h4 class="tk-cooper-black-std">{{country|upper}}</h4>
 				    		<ul>
 				    			{% for city in cities %}
 				    			<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
@@ -44,11 +44,11 @@
 			{% for news in all_news %}
 			<section>
 				{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
-				<h1><a href="{{ the_url }}">{{ news.title }}</a> <small>{{ news.published }}</small></h1>
+				<h1 class="tk-cooper-black-std"><a href="{{ the_url }}">{{ news.title }}</a> <small>{{ news.published }}</small></h1>
 				<p>By {{ news.author }} in {{ news.location }}</p>
 				{{ news.short_description|md|safe }}
 			</section>
-			<div class="more text-right"><a href="{{ the_url }}">Read More</a></div>
+			<div class="more text-right tk-cooper-black-std"><a href="{{ the_url }}">Read More</a></div>
 			{% endfor %}
 		{% else %}
 			<h1><span class="glyphicon glyphicon-wrench"></span> We are working on bringing you more workshops and that means news.</h1>

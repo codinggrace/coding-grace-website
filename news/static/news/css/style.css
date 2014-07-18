@@ -21,10 +21,10 @@ h1#news{
 .news a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
 .news a:active {color:white; text-decoration:underline;}  /* selected link */
 
-.news h1 a:link {color:black; text-decoration:underline;}      /* unvisited link */
-.news h1 a:visited {color:black; text-decoration:underline;}  /* visited link */
+.news h1 a:link {color:black; text-decoration:none;}      /* unvisited link */
+.news h1 a:visited {color:black; text-decoration:none;}  /* visited link */
 .news h1 a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
-.news h1 a:active {color:black; text-decoration:underline;}  /*selected link */
+.news h1 a:active {color:black; text-decoration:none;}  /*selected link */
 
 div.news{
 	margin-bottom: 30px;
