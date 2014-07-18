@@ -10,7 +10,7 @@
         {% for event in events_list %}
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <h1 class="tk-cooper-black-std"><a href="{% url 'events:event_detail' event.slug event.id %}">{{event.title}}</a></h1>
+            <h1 class="tk-cooper-black-std"><a href="{% url 'events:event_detail' event.slug event.id %}"><span class="glyphicon glyphicon-bullhorn"></span> {{event.title}}</a></h1>
             <h1><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left</h1>
             <div class="row">
                 <section class="col-md-8">
