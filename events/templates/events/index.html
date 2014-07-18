@@ -62,30 +62,40 @@
 </div>
 
 <h1 id="past-events" class="text-center tk-cooper-black-std">Past Events</h1>
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid past-events">
+
     {% for year_event in past_events %}
+    <div class="row">
         <div class="col-md-12">
             <h2>{{year_event.0}}</h2>
         </div>
+
         {% for monthly_event in year_event.1 %}
             {% if monthly_event.1 %}
 
-                {% if forloop.counter|modulo:4 %}
-                <div class="row">
+                {% if forloop.first %}
+                <div class="container-fluid">
                 {% endif %}
 
-                    <div class="col-md-3">
-                        <h3>{{monthly_event.0|capfirst}}</h3>
-                        <ul>
-                            {% for event in monthly_event.1 %}
-                            {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
-                            <li><a href="{{ the_url }}">{{event.title}}</a> <small>({{event.location.city|title}})</small></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    {% if forloop.counter|modulo:5 or forloop.first %}
+                    <div class="row past-events-months">
+                    {% endif %}
 
-                {% if forloop.counter|modulo:4 %}
+                        <div class="col-md-3">
+                            <h3>{{monthly_event.0|capfirst}}</h3>
+                            <ul>
+                                {% for event in monthly_event.1 %}
+                                {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
+                                <li><a href="{{ the_url }}">{{event.title}}</a> <small>({{event.location.city|title}})</small></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    {% if forloop.counter|modulo:4 or forloop.last%}
+                    </div>
+                    {% endif %}
+
+                {% if forloop.last %}
                 </div>
                 {% endif %}
 
@@ -93,8 +103,9 @@
 
         {% endfor %}
 
-    {% endfor %}
     </div>
+    {% endfor %}
+
 </div>
 
 {% endblock %}

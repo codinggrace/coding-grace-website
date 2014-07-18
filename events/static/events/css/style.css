@@ -71,9 +71,25 @@ h1#past-events{
 
 .past-events{
     /*background-color: #A16609;*/
-    margin-top:5px;
+    /*margin-top:5px;*/
     /*color:white;*/
 }
+
+.past-events h2{
+    background-color: rgba(161, 102, 9, 0.5);
+    margin-top: -10px;
+    padding: 10px;
+}
+
+.past-events h3{
+    /*background-color: green;*/
+    margin-top: 0;
+}
+
+.past-events-months ul+div{
+    background-color: yellow;
+}
+
 #description .event-date-time{
     border: 5px double #F7A21B;
     padding: 10px;
