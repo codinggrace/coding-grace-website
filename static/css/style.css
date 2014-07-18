@@ -105,7 +105,7 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
 #chapter h2, #chapter h3{
     font-weight: bold;
 }
-h1#chapters{
+h1#chapters, h1#resources{
     background-color: #F7A21B;
     color:white;
     font-size: 72px;
@@ -168,6 +168,32 @@ div.other-chapters{
     opacity: 0.8;
 }
 
+.resources h1{
+    background-color: rgba(247, 162, 27, 0.8);
+    padding: 20px;
+    margin-top: 0;
+    color: white;
+    text-shadow: 1px 1px 3px #000000;
+}
+
+.resources h2 {
+    background-color: rgba(247, 162, 27, 0.6);
+    padding: 10px;
+    margin-top: -10px;
+
+}
+.resources div+h1, .resources div+h2{
+    margin-top: 10px;
+    /*background-color:rgba(247, 162, 27, 0.8);*/
+}
+
+.resources #disqus h1 {
+    margin-top: 10px;
+}
+
+.resources .panel-heading{
+    background-color: rgba(247, 162, 27, 0.6);
+}
 /*CODE OF CONDUCT*/
 .conduct-head{
     background-color: #F7A21B;
