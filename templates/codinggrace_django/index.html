@@ -13,12 +13,12 @@
             <h1 class="tk-cooper-black-std"><a href="{% url 'events:event_detail' event.slug event.id %}"><span class="glyphicon glyphicon-bullhorn"></span> {{event.title}}</a></h1>
             <h1><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left</h1>
             <div class="row">
-                <section class="col-md-8">
+                <section class="col-md-9">
                     {% for level in event.level_type.all %}{{ level }}{% endfor %} <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-map-marker"></span> <a href="/chapters/{{event.location.city}}">{{event.location.city|title}}</a> <span class="glyphicon glyphicon-play"></span>  <span class="glyphicon glyphicon-calendar"></span> <span class="">{{event.start_datetime|date:"D, dS M Y"}} {{ event.start_datetime|time:"H:i e" }}</span>  <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-euro"></span><span class="">{{event.cost}}</span>
                 </section>
             </div>
             <div class="row">
-                <section class="col-md-7">
+                <section class="col-md-8">
 
                 {% if event.short_description %}
                     <p>{{event.short_description|md|safe}}</p>
@@ -27,6 +27,7 @@
                 {% endif %}
                 </section>
                 <section class="col-md-2 ">
+
                 <a href="{% url 'events:event_detail' event.slug event.id %}" class="btn btn-success btn-lg" role="button">More Details</a>
                 </section>
             </div>
