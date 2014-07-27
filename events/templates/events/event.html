@@ -21,6 +21,10 @@
 
         <div class="row event">
             <div class="col-md-5 col-md-offset-1" id="description">
+                {% if event.is_cancelled %}
+                <h3 class="alert alert-danger text-center" role="alert">CANCELLED</h3>
+                {% endif %}
+
                 <section class="event-date-time">
                     <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city|capfirst}}
                     <br/>
@@ -31,6 +35,7 @@
                 {% endif %}
 
                 <h2>Workshop details <small><span class="glyphicon glyphicon-tag"></span> {% for level in event.level_type.all %}{{ level }}{% endfor %}</small></h2>
+
                 <h4><span class="glyphicon glyphicon-euro"></span> {{event.cost}}</h4>
 
                 {{event.description|md|safe}}

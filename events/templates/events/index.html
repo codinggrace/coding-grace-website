@@ -27,7 +27,7 @@
         {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
         <div class="col-md-2"></div>
         <div class="col-md-10">
-            <h2 class="tk-cooper-black-std"><a href="{{ the_url }}">{{event.title}}</a> <small><span class="glyphicon glyphicon-tag"></span> {% for level in event.level_type.all %}{{ level }}{% endfor %}</small></h2>
+            <h2 class="tk-cooper-black-std"> <a href="{{ the_url }}">{{event.title}}</a> <small><span class="glyphicon glyphicon-tag"></span> {% for level in event.level_type.all %}{{ level }}{% endfor %} {% if event.is_cancelled %}<span class="label label-danger">Cancelled</span>{% endif %}</small></h2>
             <div class="row">
                 <section class="col-md-8">
                     <span class="glyphicon glyphicon-map-marker"></span> <span class="highlight">{{event.location.city|title}}</span> <span class="glyphicon glyphicon-play"></span>  <span class="glyphicon glyphicon-calendar"></span> <span class="highlight">{{event.start_datetime|date:"D, dS M Y"}} {{ event.start_datetime|time:"H:i e" }}</span> </span> <span class="glyphicon glyphicon-play"></span> <span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left
@@ -36,14 +36,13 @@
             <div class="row">
                 <section class="col-md-7">
                 {% if event.short_description %}
-                    <p>{{event.short_description|md|safe}}</p>
+                    {{event.short_description|md|safe}}
                 {% else %}
-                    <p>{{event.description|md|safe|truncatewords:30}}</p>
+                    {{event.description|md|safe|truncatewords:30}}
                 {% endif %}
                 <p>EUR{{event.cost}} (Includes lunch)</p>
                 </section>
                 <section class="col-md-2">
-
                 <a href="{{ the_url }}" class="btn btn-success btn-lg" role="button">Details <span class="glyphicon glyphicon-chevron-right"></span></a>
                 </section>
             </div>
@@ -86,7 +85,9 @@
                             <ul>
                                 {% for event in monthly_event.1 %}
                                 {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
-                                <li><a href="{{ the_url }}">{{event.title}}</a> <small>({{event.location.city|title}})</small></li>
+                                <li>
+                                    {% if event.is_cancelled %}<span class="label label-danger">Cancelled</span>{% endif %} <a href="{{ the_url }}">{{event.title}}</a> <small>({{event.location.city|title}})</small>
+                                </li>
                                 {% endfor %}
                             </ul>
                         </div>

@@ -108,6 +108,7 @@ class Event(models.Model):
     embed_ticket = models.TextField(null=True, blank=True, help_text="Just paste in the html embed ticket, or just place instructions in HTML/Markdown here to display in ticket section.")
     event_url = models.URLField()
     slug = models.SlugField(help_text="E.G. this-this-an-event")
+    is_cancelled = models.BooleanField(default=False)
 
     def __str__(self):
         return "[{}] {} - {}".format(self.location.city, self.title, self.start_datetime)
