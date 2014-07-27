@@ -26,11 +26,15 @@
 				     	<div class="panel-body side">
 				     		{% for country, cities in chapters %}
 				     		<h4 class="tk-cooper-black-std">{{country|upper}}</h4>
+				     		{% if cities %}
 				    		<ul>
 				    			{% for city in cities %}
 				    			<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
 				    			{% endfor %}
 				    		</ul>
+				    		{% else %}
+				    			<p>No chapters</p>
+				    		{% endif %}
 				    		{% endfor %}
 				    	</div>
 				    </div>

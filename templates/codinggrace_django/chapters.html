@@ -37,12 +37,15 @@
 					<h3 class="panel-title tk-cooper-black-std">{{ country|upper }}</h3>
 				</div>
 				<div class="panel-body">
-					{% for city in cities %}
-						{% url 'chapter' city as the_url %}
-						<a href="{{the_url}}">{{ city|title }}</a>
-
-					{% endfor %}
-				</div>
+					{% if cities %}
+						{% for city in cities %}
+							{% url 'chapter' city as the_url %}
+							<a href="{{the_url}}">{{ city|title }}</a>
+						{% endfor %}
+					{% else %}
+						<p>No chapters</p>
+					{% endif %}
+					</div>
 			</div>
 			{% endfor %}
 

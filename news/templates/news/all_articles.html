@@ -19,11 +19,15 @@
 				{% for country, cities in chapters %}
 				<li class="list-group-item">
 					<h4 class="tk-cooper-black-std">{{country|title}}</h4>
+					{% if cities %}
 					<ul>
 					{% for city in cities %}
 					<li><a href="/news/all_articles/{{city}}/">{{city|title}}</a></li>
 					{% endfor %}
 					</ul>
+					{% else %}
+					<p>No chapters</p>
+					{% endif %}
 				</li>
 				{% endfor %}
 			</ul>

@@ -30,8 +30,13 @@
         {% else %}
             <div class="jumbotron">
                 <h1 class="tk-cooper-black-std">{{ chapter|upper }}</h1>
+
                 <p>
+                    {% if chapter.city.is_chapter %}
                     Interested in helping out? Contact us for further info.
+                    {% else %}
+                    Want to start a chapter? Contact us for further info.
+                    {% endif %}
                 </p>
                 <p><a href="mailto:contact@codinggrace.com" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> contact@codinggrace.com</a></p>
             </div>
@@ -88,10 +93,15 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-1">
         {% for country, cities in country_chapters %}
-            <h3>{{country|title}}</h3>
-            {% for city in cities %}
-            <a href="/chapters/{{city}}/">{{city|title}}</a>
-            {% endfor %}
+            <h3>{{country|upper}}</h3>
+            {% if cities %}
+                {% for city in cities %}
+                <a href="/chapters/{{city}}/">{{city|title}}</a>
+                {% endfor %}
+            {% else %}
+                <p>No chapters</p>
+            {% endif %}
+
         {% endfor %}
         </div>
     </div>
