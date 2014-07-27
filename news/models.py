@@ -8,7 +8,7 @@ class NewsPost(models.Model):
     title = models.CharField(max_length=250)
     published = models.DateTimeField(auto_now=False, auto_now_add=False)
     author = models.ForeignKey(Organiser)
-    chapter = models.ForeignKey(Chapter, null=True)
+    chapter = models.ForeignKey(Chapter, null=True, blank=True)
     slug = models.SlugField(max_length=250)
     short_description = models.TextField(null=True)
     content = models.TextField(null=True)

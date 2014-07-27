@@ -47,7 +47,11 @@ def all_articles(request):
 
 def all_articles_chapter(request, chapter):
     context = {}
-    articles = NewsPost.objects.filter(chapter__city__name=chapter).filter(is_published=True)
+    if chapter == "other":
+        articles = NewsPost.objects.filter(chapter=None).filter(is_published=True)
+    else:
+        articles = NewsPost.objects.filter(chapter__city__name=chapter).filter(is_published=True)
+
     paginator = Paginator(articles, 5)
     page = request.GET.get('page')
     try:
