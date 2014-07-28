@@ -47,7 +47,7 @@
             {% if current_upcoming_events %}
                 {% for event in current_upcoming_events %}
                 {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
-                <h3><a href="{{the_url}}">{{ event.title }}</a> <small>{{ event.start_datetime}} </small></h3>
+                <h3><a href="{{the_url}}">{{ event.title }}</a> <small>{{ event.start_datetime}} </small> {% if event.is_cancelled %}<span class="label label-danger">Cancelled</span>{% endif %}</h3>
                 <p>{{event.location.venue}}, {{event.location.address1}}, {% if event.location.address2 %}{{event.location.address2}}{% endif %}</p>
                 {% endfor %}
             {% else %}
@@ -80,7 +80,7 @@
         <div class="col-md-10 col-md-offset-1">
             {% for event in past_events %}
             {% url 'events:event_detail' slug=event.slug event_id=event.id as the_url %}
-            <h1><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{event.title}}</span></a></h1>
+            <h1><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{event.title}}</span></a> {% if event.is_cancelled %}<span class="label label-danger">Cancelled</span>{% endif %}</h1>
             {{event.short_description|md|safe}}
             {% endfor %}
         </div>
