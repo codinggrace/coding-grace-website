@@ -17,7 +17,7 @@ def index(request):
 
 def news(request, slug, year, month, day):
 
-    article = NewsPost.objects.filter(slug=slug).filter(published__year=year).filter(published__month=month).filter(published__day=day).filter(is_published=True)
+    article = NewsPost.objects.filter(slug=slug).filter(published__year=year).filter(published__month=month).filter(published__day=day)
     if article:
         context = {"article":article[0]}
     else:
