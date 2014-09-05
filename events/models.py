@@ -109,6 +109,7 @@ class Event(models.Model):
     event_url = models.URLField()
     slug = models.SlugField(help_text="E.G. this-this-an-event")
     is_cancelled = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return "[{}] {} - {}".format(self.location.city, self.title, self.start_datetime)
