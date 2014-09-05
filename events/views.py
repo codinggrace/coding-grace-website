@@ -10,13 +10,13 @@ from news.models import NewsPost
 # Create your views here.
 def index(request):
     """Events page listins, upcoming and past events"""
-    events_list = Event.objects.all()
+    events_list = Event.objects.filter(is_published=True)
     context = {'events_list': events_list, 'active':'events'}
 
-    context["current_events"] = Event.objects.filter(start_datetime__gte=now()).order_by('start_datetime')
+    context["current_events"] = events_list.filter(start_datetime__gte=now()).order_by('start_datetime')
 
     ## Get past events
-    past_events = Event.objects.filter(start_datetime__lt=now())
+    past_events = events_list.filter(start_datetime__lt=now())
 
     # Get sorted list of months from pre-defined dict; get sorted list of years in descending order from Event model
     month_dict = {1:"jan", 2:"feb", 3:"mar", 4:"apr", 5:"may", 6:"jun", 7:"jul", 8:"aug", 9:"sep", 10:"oct", 11:"nov", 12:"dec"}
@@ -30,7 +30,7 @@ def index(request):
     for y in years_list:
         monthly_events = []
         for m in month_list:
-            m_events = Event.objects.filter(start_datetime__lte=now()).filter(start_datetime__year=y).filter(start_datetime__month=m).order_by("start_datetime")
+            m_events = events_list.filter(start_datetime__lte=now()).filter(start_datetime__year=y).filter(start_datetime__month=m).order_by("start_datetime")
             if len(m_events) > 0:
                 monthly_events.append( (month_dict[m], m_events ) )
         yearly_events.append( (y, monthly_events) )

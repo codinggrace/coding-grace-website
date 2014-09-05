@@ -5,7 +5,7 @@ from events.models import Chapter, City, Country, Event, Location, Organiser
 from news.models import NewsPost
 
 def home(request):
-    events_list = Event.objects.filter(start_datetime__gte=now()).order_by('start_datetime')
+    events_list = Event.objects.filter(is_published="True").filter(start_datetime__gte=now()).order_by('start_datetime')
 
     context = {'events_list': events_list, 'active':'home'}
     return render(request, 'codinggrace_django/index.html', context)
