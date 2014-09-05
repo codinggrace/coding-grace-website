@@ -30,7 +30,7 @@ def index(request):
     for y in years_list:
         monthly_events = []
         for m in month_list:
-            m_events = Event.objects.filter(start_datetime__lte=now()).filter(start_datetime__year=y).filter(start_datetime__month=m)
+            m_events = Event.objects.filter(start_datetime__lte=now()).filter(start_datetime__year=y).filter(start_datetime__month=m).order_by("start_datetime")
             if len(m_events) > 0:
                 monthly_events.append( (month_dict[m], m_events ) )
         yearly_events.append( (y, monthly_events) )
