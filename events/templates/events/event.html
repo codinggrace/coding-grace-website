@@ -74,22 +74,28 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
+        <div class="row event" id="faq">
+            <div class="col-md-5 col-md-offset-1">
                 {% include "disqus_common.html" %}
             </div>
-        </div>
-
-        {% if event.faq %}
-        <div class="row event" id="faq">
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-5">
                 <h1 >FAQ</h1>
-            </div>
-            <div class="col-md-10 col-md-offset-1">
+                <h2>Q. I see it's female-friendly, are guys welcome as well?</h2>
+                <p><strong>YES.</strong> You are welcome as a +1. If you have any questions, feel free to contact me at contact@codinggrace.com.</p>
+
+                {% if event.faq %}
                 {{event.faq|md|safe}}
+                {% endif %}
+
+                <h2>If you have any other questions</h2>
+                <p>You can contact <strong>{{event.organiser}}</strong> by emailing <a href="mailto:{{event.organiser.email}}">{{event.organiser.email}}</a>.</p>
+
+
+                <h1>Refunds</h1>
+                <p>Full refunds until 24 hours before the event.</p>
+                <p>If there are not enough people signed up to the event, I will be in touch to refund you.</p>
             </div>
         </div>
-        {% endif %}
 
         {% if news %}
         <div class="row" id="related-news">
