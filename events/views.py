@@ -21,7 +21,7 @@ def index(request):
     # Get sorted list of months from pre-defined dict; get sorted list of years in descending order from Event model
     month_dict = {1:"jan", 2:"feb", 3:"mar", 4:"apr", 5:"may", 6:"jun", 7:"jul", 8:"aug", 9:"sep", 10:"oct", 11:"nov", 12:"dec"}
     month_list = list(set(month_dict.keys()))
-    years_list = list(set([e.start_datetime.year for e in Event.objects.all()]))
+    years_list = list(set([e.start_datetime.year for e in events_list]))
     years_list.reverse()
 
     # Return list to template, e.g.

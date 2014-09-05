@@ -5,7 +5,7 @@ from events.models import Chapter, City, Country, Event, Location, Organiser
 from news.models import NewsPost
 
 def home(request):
-    events_list = Event.objects.filter(is_published="True").filter(start_datetime__gte=now()).order_by('start_datetime')
+    events_list = Event.objects.filter(is_published=True).filter(start_datetime__gte=now()).order_by('start_datetime')
 
     context = {'events_list': events_list, 'active':'home'}
     return render(request, 'codinggrace_django/index.html', context)
@@ -18,7 +18,7 @@ def chapters(request):
 def chapter(request, chapter):
     context = {"active":"about"}
 
-    chapter_objects = Event.objects.filter(location__city__name=chapter)
+    chapter_objects = Event.objects.filter(is_published=True).filter(location__city__name=chapter)
 
     # Get chapter's upcoming events
     current_upcoming_events = chapter_objects.filter(start_datetime__gte=now()).order_by('start_datetime')
