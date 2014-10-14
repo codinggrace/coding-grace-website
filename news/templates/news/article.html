@@ -18,7 +18,7 @@
 			<article>
 				<h1 class="text-center tk-cooper-black-std">{{ article.title }}</h1>
 				<section>
-					<h4 class="post-author">By {{ article.author }} in {{ article.location}} <small>{{ article.published }}</small></h4>
+					<h4 class="post-author">By {{ article.author }} {% if article.chapter %}in {{ article.chapter|title }} <small>{{ article.published }}</small>{% endif %}</h4>
                     {% if article.event %}
                     {% url 'events:event_detail' slug=article.event.slug event_id=article.event.id as the_url %}
                     <h5><span class="glyphicon glyphicon-hand-right"></span> Related event: <a href="{{the_url}}">{{article.event.title}} <small>({{article.event.start_datetime|date:"D d M Y"}})</small></a></h5>
