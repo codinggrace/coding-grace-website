@@ -71,12 +71,12 @@
 
         {% for monthly_event in year_event.1 %}
             {% if monthly_event.1 %}
-
                 {% if forloop.first %}
                 <div class="container-fluid">
                 {% endif %}
 
                     {% if forloop.counter|modulo:5 or forloop.first %}
+                    [FIRST]{{forloop.counter|modulo:5}} | {{forloop.first}}
                     <div class="row past-events-months">
                     {% endif %}
 
@@ -93,7 +93,8 @@
                         </div>
 
                     {% if forloop.counter|modulo:4 or forloop.last%}
-                    </div>
+                    [LAST] {{forloop.last}} | {{forloop.counter|modulo:4}}
+                    </div> <!-- end past-events-months -->
                     {% endif %}
 
                 {% if forloop.last %}

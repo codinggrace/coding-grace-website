@@ -64,7 +64,7 @@
 			<section>
 				{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
 				<h1 class="tk-cooper-black-std"><a href="{{ the_url }}">{{ news.title }}</a> <small>{{ news.published }}</small></h1>
-				<p>By {{ news.author }} in {{ news.location }}</p>
+				<p>By {{ news.author }} {% if news.chapter.city %}in {{ news.chapter.city|title }}{% else %}{{ news.event.location.city|title }}{% endif %}</p>
 				{{ news.short_description|md|safe }}
 			</section>
 			<div class="more text-right tk-cooper-black-std"><a href="{{ the_url }}">Read More</a></div>

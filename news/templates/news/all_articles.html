@@ -43,7 +43,7 @@
 	    		<li class="list-group-item text-left">
 	    			{% url 'news:news_article' slug=news.slug year=news.published.year month=news.published.month day=news.published.day as the_url %}
 	    			<h2 class="tk-cooper-black-std"><a href="{{the_url}}"><span class="glyphicon glyphicon-link"></span> {{ news.title }}</a> <small>{{ news.published }}</small></h2>
-	    			<p>by <a href="{{ news.author.url }}">{{ news.author }}</a> in {{ news.chapter|title }}</p>
+	    			<p>by <a href="{{ news.author.url }}">{{ news.author }}</a> {% if news.chapter.city %}in {{ news.chapter|title }}{% else %}{{ news.event.location.city|title }}{% endif %}</p>
 					{{ news.short_description }}
 	    		</li>
 	    	{% endfor %}
