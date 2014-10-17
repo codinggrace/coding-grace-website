@@ -76,7 +76,6 @@
                 {% endif %}
 
                     {% if forloop.counter|modulo:5 or forloop.first %}
-                    [FIRST]{{forloop.counter|modulo:5}} | {{forloop.first}}
                     <div class="row past-events-months">
                     {% endif %}
 
@@ -93,7 +92,6 @@
                         </div>
 
                     {% if forloop.counter|modulo:4 or forloop.last%}
-                    [LAST] {{forloop.last}} | {{forloop.counter|modulo:4}}
                     </div> <!-- end past-events-months -->
                     {% endif %}
 
