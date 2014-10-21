@@ -52,7 +52,7 @@ class CodingGraceDjangoTestCase(TestCase):
                     name = "A Sponsor",
                     url = "http://asponsor.com",
                     blurb = "We are a sponsor.",
-                    what = "Venue",
+                    #what = "Venue",
                     slug = "a-sponsor"
 
         )
@@ -68,12 +68,13 @@ class CodingGraceDjangoTestCase(TestCase):
                     organiser = organiser1,
                     cost = "20.00",
                     event_url = "http://codinggrace.com",
-                    slug = "title-for-event-one"
+                    slug = "title-for-event-one",
+                    is_cancelled = False,
+                    is_published = True
 
         )
         event1.level_type.add(beginner_level)
         event1.mentors.add(mentor1)
-        event1.sponsors.add(sponsor1)
         event1.save()
 
 
