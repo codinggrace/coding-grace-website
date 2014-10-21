@@ -3,4 +3,4 @@ machine:
     version: 3.4.1
 test:
   override:
-    - python manage.py test -v2 --settings=codinggrace_django.settings
+    - python3.4 manage.py test -v2 --settings=codinggrace_django.settings
