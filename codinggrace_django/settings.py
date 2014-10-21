@@ -100,8 +100,7 @@ WSGI_APPLICATION = 'codinggrace_django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db.codinggrace-django',
+        'ENGINE': 'django.db.backends.sqlite3',
     }
 }
 
