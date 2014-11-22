@@ -3,8 +3,9 @@ Coding Grace README
 # Steps to get django site running locally on your machine
 - `heroku login`
 
-## If you haven't forked the heroku app before
+## If you haven't forked the heroku app before. (Ref: [Forking App on Heroku](https://devcenter.heroku.com/articles/fork-app))
 `heroku fork -a sourceapp targetapp`
+
 
 Where `sourceapp` is `coding-grace`.
 
@@ -32,6 +33,10 @@ To run is locally:
 
 
 # Handy stuff
+## Adding a new social application to allauth
+Social Accounts › Social applications
+
+## Getting latest database snapshot
 Get latest copy of the data and overides the targetapp's database
 
 Example: `heroku pgbackups:transfer --app coding-grace-dev coding-grace::CHARCOAL HEROKU_POSTGRESQL_OLIVE`
