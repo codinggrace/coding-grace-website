@@ -30,6 +30,7 @@
             {% load account %}
             {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>){% endif %}
             {% load socialaccount %}
+            <a href="{% provider_login_url "github" %}">Github</a>
             </div>
         </div>
     </div>
