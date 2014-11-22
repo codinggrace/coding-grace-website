@@ -26,11 +26,16 @@
                     <li {% if active == "conduct" %}class="active"{% endif %}><a href="/codeofconduct/">Code Of Conduct</a></li>
                 </ul>
             </div>
-            <div class="col-md-2 col-md-offset-3 user">
+            <div class="col-md-3 col-md-offset-2 user">
             {% load account %}
-            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>){% endif %}
-            {% load socialaccount %}
-            <a href="{% provider_login_url "github" %}">Github</a>
+            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>)
+            {% else %}
+                {% load socialaccount %}
+                Mentor Login: <br/>
+                <a href="{% provider_login_url "github" %}">Github</a> | <a href="{% provider_login_url "bitbucket" %}">BitBucket</a> | <a href="{% provider_login_url "twitter" %}">Twitter</a>
+            {% endif %}
+            
+            
             </div>
         </div>
     </div>
