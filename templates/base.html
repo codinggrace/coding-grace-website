@@ -28,10 +28,11 @@
             </div>
             <div class="col-md-3 col-md-offset-2 user">
             {% load account %}
-            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>)
+            {% if user.is_authenticated %}Hello, {% user_display user %} (<a href="/accounts/logout/">Logout</a>) {% if perms.events.add_event %}<a href="/admin/events/event/add/" class="btn btn-info btn-xs" role="button"><span class="glyphicon glyphicon-plus"></span> Add event</a>{% endif %}
+
             {% else %}
                 {% load socialaccount %}
-                Mentor Login: <br/>
+                Organiser Login: <br/>
                 <a href="{% provider_login_url "github" %}">Github</a> | <a href="{% provider_login_url "bitbucket" %}">BitBucket</a> | <a href="{% provider_login_url "twitter" %}">Twitter</a>
             {% endif %}
             
