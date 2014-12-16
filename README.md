@@ -21,7 +21,7 @@ To see if this works, type the following in your terminal.
 
 This is a custom environment variable. 
 
-`echo echo $DATABASE_URL`
+`echo $DATABASE_URL`
 
 Compare with the database URL in your app settings via Heroke dashboard. They should be the same.
 
