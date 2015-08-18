@@ -96,7 +96,7 @@ class Event(models.Model):
     short_description = models.TextField(null=True, help_text="Markdown text")
     description = models.TextField(help_text="Markdown text")
     faq = models.TextField(null=True, blank=True, help_text="Markdown text. This field is optional.")
-    pub_datetime = models.DateTimeField(auto_now=True, auto_now_add=True)
+    pub_datetime = models.DateTimeField(auto_now=True)
     start_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
     end_datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
     location = models.ForeignKey(Location)

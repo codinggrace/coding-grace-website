@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,6 +74,7 @@ INSTALLED_APPS = (
     # 'allauth.socialaccount.providers.xing',
 
     'guardian',
+
     # Coding Grace Apps
     'events',
     'mymarkdown',
@@ -137,6 +140,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     # allauth specific context processors
     "allauth.account.context_processors.account",
     "allauth.socialaccount.context_processors.socialaccount",
+
+    # for django-grappelli
+    "django.core.context_processors.request",
 )
 
 AUTHENTICATION_BACKENDS = (
