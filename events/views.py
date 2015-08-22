@@ -35,7 +35,6 @@ def index(request):
                 monthly_events.append( (month_dict[m], m_events ) )
         yearly_events.append( (y, monthly_events) )
 
-    print(yearly_events)
     context["past_events"] = yearly_events
 
     return render(request, 'events/index.html', context)

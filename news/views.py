@@ -32,7 +32,6 @@ def all_articles(request):
     page = request.GET.get('page')
     try:
         news_items = paginator.page(page)
-        print(news_items)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
         news_items = paginator.page(1)
@@ -56,7 +55,6 @@ def all_articles_chapter(request, chapter):
     page = request.GET.get('page')
     try:
         news_items = paginator.page(page)
-        print(news_items)
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
         news_items = paginator.page(1)

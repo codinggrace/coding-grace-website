@@ -39,7 +39,6 @@ def chapter(request, chapter):
     # Get the chapter object if it exists, if not, just return the string
     try:
         context["chapter"] = Chapter.objects.get(city__name = chapter)
-        print("xx")
     except Chapter.DoesNotExist:
         context["chapter"] = chapter
 
