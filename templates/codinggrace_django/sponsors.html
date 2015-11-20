@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Sponsors - Thank You!{% endblock %}
+
+{% load staticfiles %}
+{% load my_md %}
+
+{% block content %}
+<h1 id="sponsors" class="text-center tk-cooper-black-std">Sponsors</h1>
+
+<div class="container-fluid">
+	<div>
+		This is a hu-ge <span class="glyphicon glyphicon-heart"></span> to all our supporters so far. Organisations are listed
+		in alphabetical order.
+	</div>
+	<div>
+		If your company is interested in getting involved with our events, you can email us at <a href="mailto:contact@codinggrace.com">contact@codinggrace.com</a>.
+	</div>
+
+	{% for sponsor, events_list in events_sponsors_list %}
+	<h1 class="tk-cooper-black-std">{{sponsor.name}}</h1>
+	<div class="row">
+		<div class="col-md-6">
+			
+			<div class="panel panel-default">
+				<div class="panel-heading"><h3>About</h3></div>
+				<div class="panel-body">
+				{{sponsor.blurb|md|safe}}
+				</div>
+				<div class="panel-footer"><a href="{{key.url}}">{{sponsor.url}}</a></div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-info">
+				<div class="panel-heading">Events supported by {{sponsor.name}}</div>
+				<div class="list-group">
+			{% for event in events_list %}
+				
+				<a href="{% url 'events:event_detail' event.slug event.id %}" class="list-group-item">{{event.title}} ({{event.start_datetime}})</a>
+				
+			{% endfor %}
+			</div>
+			</div>
+
+			
+			
+			<!--<ul>
+			{% for sponsorship in sponsorship_list %}
+				<li><a href="{{s.event_url}}">{{sponsorship.title}} ({{sponsorship.start_datetime}})</a></li>
+			{% endfor %}
+			</ul>-->
+		</div>
+	</div>
+
+	<hr>
+	{% endfor %}
+		
+	
+
+</div>
+{% endblock %}

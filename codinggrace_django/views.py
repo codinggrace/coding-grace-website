@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.utils.timezone import now
 
-from events.models import Chapter, City, Country, Event, Location, Organiser
+from events.models import Chapter, City, Country, Event, Location, Organiser, Sponsor
 from news.models import NewsPost
 
 def home(request):
@@ -53,6 +53,19 @@ def colophon(request):
 
 def resources(request):
     return render(request, 'codinggrace_django/resources.html', {})
+
+def sponsors(request):
+    context = {"active":"sponsors"}
+    sponsors = Sponsor.objects.all().order_by("name")
+    context["sponsors"] = sponsors
+    
+    events_sponsors_list = []
+    events = Event.objects.all()
+    for s in sponsors:
+        events_sponsors_list.append((s, events.filter(sponsorship__sponsor__slug=s.slug).order_by("start_datetime")))
+    context["events_sponsors_list"] = events_sponsors_list
+
+    return render(request, 'codinggrace_django/sponsors.html', context)
 
 def news_redirect(request, year, month, day, slug):
     # return redirect('news', year=year, month=month, day=day, slug=slug)
