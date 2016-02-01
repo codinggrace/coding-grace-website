@@ -48,9 +48,9 @@ def event(request, slug, event_id):
         event_org = event.event_url.split("/")[-2]
         tito_css = '<link rel="stylesheet" type="text/css" href="https://ti.to/{}/{}.css?version=4" />'.format(event_org, event_name)
         context["tito_css"] = tito_css
-        tito_js = '<script src="https://ti.to/{}/{}.js?version=3" type="text/javascript"></script>'.format(event_org, event_name)
+        tito_js = '<script src="https://js.tito.io/v1" async></script>'
         context["tito_js"] = tito_js
-        tito_form = '<div id="tito-register-form"></div>'
+        tito_form = '<tito-widget event="{}/{}"></tito-widget>'.format(event_org, event_name)
         context["tito_form"] = tito_form
 
     workshop_ended = True
