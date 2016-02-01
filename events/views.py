@@ -46,7 +46,7 @@ def event(request, slug, event_id):
     if ("/ti.to/" in event.event_url) or ("/tito/" in event.event_url):
         event_name = event.event_url.split("/")[-1]
         event_org = event.event_url.split("/")[-2]
-        tito_css = '<link rel="stylesheet" type="text/css" href="https://ti.to/{}/{}.css?version=4" />'.format(event_org, event_name)
+        tito_css = '<link rel="stylesheet" type="text/css" href='https://css.tito.io/v1' />'
         context["tito_css"] = tito_css
         tito_js = '<script src="https://js.tito.io/v1" async></script>'
         context["tito_js"] = tito_js
