@@ -13,7 +13,7 @@ This will give you an instance to the live database, and also port over the apps
 
 Now we will export the environment settings:
 
-`eval $(heroku config -a <app> --shell | sed -E 's/^([A-Z_]+=)(.*)/export \1"\2"/g')` where `<app>` is the name of your heroku app.
+`eval $(heroku config -a <app> --shell | sed -E 's/^([A-Z_]+=)(.*)/export \1\2/g')` where `<app>` is the name of your heroku app.
 
 To see if this works, type the following in your terminal. 
 
