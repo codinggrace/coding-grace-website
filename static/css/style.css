@@ -26,22 +26,6 @@ footer a:visited {color:white; text-decoration:underline;}  /* visited link */
 footer a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
 footer a:active {color:white; text-decoration:underline;}  /* selected link */
 
-.flex-container {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    margin-left:20px;
-    margin-right:20px;
-}
-
-.flex-item {
-    margin: 10px;
-    width: 200px;
-}
-
 .about h1{
     color: #F7A21B;
     font-size:96px;
