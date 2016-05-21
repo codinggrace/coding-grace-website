@@ -1,3 +1,4 @@
+
 Coding Grace README
 
 # Steps to get django site running locally on your machine
