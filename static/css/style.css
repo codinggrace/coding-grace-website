@@ -124,6 +124,7 @@ h1#chapters, h1#resources, #get_involved h1{
 }
 
 #get_involved h1 {
+color:white;
 background-color: rgba(247, 162, 27, 0.7);
 
 }
