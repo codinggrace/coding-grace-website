@@ -92,9 +92,29 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     color:white;
 }
 
+.flex-get-involved-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: stretch;
+    align-items: stretch;
+    padding: 30px 0;
+}
+
+.flex-get-involved-item {
+    background-color: white;
+    width: 280px;
+    padding: 10px 20px;
+    margin: 10px;
+}
+
 #chapter, .panel-heading.chapter {
     background-color: #F7A21B;
-    color:white;
+    /*padding: 10px;*/
+    /*color:white;*/
 }
 
 /*#chapter h1{
