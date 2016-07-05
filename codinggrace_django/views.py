@@ -78,6 +78,19 @@ def codeofconduct(request):
     context = {"active":"conduct"}
     return render(request, 'codinggrace_django/codeofconduct_longer.html', context)
 
+def supporters(request):
+    context = {"active":"supporters"}
+    sponsors = Sponsor.objects.all().order_by("name")
+    context["sponsors"] = sponsors
+    
+    events_sponsors_list = []
+    events = Event.objects.all()
+    for s in sponsors:
+        events_sponsors_list.append((s, events.filter(sponsorship__sponsor__slug=s.slug).order_by("start_datetime")))
+    context["events_sponsors_list"] = events_sponsors_list
+    
+    return render(request, 'codinggrace_django/supporters.html', context)
+
 def get_chapters():
     # Get countries with its cities and return the list
     # [(Ireland, [Dublin, Galway]), (UK, [London])]

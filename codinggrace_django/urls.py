@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^colophon/$', 'codinggrace_django.views.colophon', name="colophon"),
     url(r'^resources/$', 'codinggrace_django.views.resources', name="resources"),
     url(r'^sponsors/$', 'codinggrace_django.views.sponsors', name="sponsors"),
+    url(r'^supporters/$', 'codinggrace_django.views.supporters', name="supporters"),
 
     # url(r'^blog/', include('blog.urls')),
     url(r"^events/", include("events.urls", namespace="events")),

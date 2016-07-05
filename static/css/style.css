@@ -77,6 +77,48 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     color:white;
 }
 
+
+.flex-supporters-sponsors-container, .flex-supporters-container, .flex-events-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;   
+}
+
+.flex-supporters-container, .flex-events-container {
+     -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+/* Contains overall supports and sponsors with events*/
+.flex-supporters-sponsors-item {
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.flex-supporters-item {
+    width: 350px;
+    margin: 10px;
+    padding: 10px;
+    /*background: #F7A21B;
+    color: white;*/
+
+}
+
+.advisor {
+    width: 200px;
+}
+
+/*Just the events supported by sponsor*/
+.flex-events-item {
+    width: 250px;
+    margin-left: 20px;
+}
+
 .flex-get-involved-container {
     display: -webkit-flex;
     display: flex;

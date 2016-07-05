@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block title %}Supporters - Thank You!{% endblock %}
+
+{% load staticfiles %}
+{% load my_md %}
+
+{% block content %}
+<h1 id="sponsors" class="text-center tk-cooper-black-std">Supporters</h1>
+
+<div class="container-fluid">
+	<p class="lead">
+		This is a hu-ge <span class="glyphicon glyphicon-heart"></span> to all our supporters so far. Big thanks to all who took time to meet me over tea/coffee and gave me advice, to all who volunteered their time to help me organise, mentor and support me in the various events.
+	</p>
+	
+	<h1 class="tk-cooper-black-std">Coding Grace Foundation Members</h1>
+	<p>Coding Grace Foundation is made up of two board members and one member.</p>	
+	<div class="flex-supporters-container">
+		<div class="flex-supporters-item text-center thumbnail">
+			<img src="http://i.imgur.com/ngRYPfub.jpg" alt="Andrea Magnorsky" class="img-circle" width="30%">
+			<div class="caption">
+		        <h2><a href="https://twitter.com/roundcrisis">Andrea Magnorsky</a></h2>
+		        <p>Director/Co-Founder</p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail">
+			<img src="http://i.imgur.com/hpUfWOVb.jpg" alt="Michael Twomey" class="img-circle" width="30%">
+			<div class="caption">
+		        <h2><a href="https://twitter.com/micktwomey">Michael Twomey</a></h2>
+		        <p>Director/Co-Founder</p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail">
+			<img src="http://i.imgur.com/hPpuvHm.jpg" alt="Vicky Twomey-Lee" class="img-circle" width="30%">
+			<div class="caption">
+		        <h2><a href="https://twitter.com/whykay">Vicky Twomey-Lee</a></h2>
+		        <p>Member/Co-Founder</p>
+	      	</div>
+		</div>
+	</div>
+
+	<h1 class="tk-cooper-black-std">Advisors</h1>
+	<p>Big thanks to the following people who spent time giving me advice and listening to me. I'm still updating this list with the awesome people who've been so awesome. <small>(In alphabetical order)</small></p>
+	<div class="flex-supporters-container">
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/mary-carty.png?set=set3&bgset=bg2" alt="Mary Carty" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/marycarty">Mary Carty</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/alexandra-etienne.png?set=set3&bgset=bg2" alt="Alexandra Etienne" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/alexandra-etienne-112290102">Alexandra Etienne</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/paul-hayes?set=set3&bgset=bg2" alt="Paul Hayes" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/paulhayes4">Paul Hayes</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/tony-kelly?set=set3&bgset=bg2" alt="Tony Kelly" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/tonykelly">Tony Kelly</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/eamon-leonard?set=set3&bgset=bg2" alt="Eamon Leonard" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/eamonleonard">Eamon Leonard</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/pauline-sargent?set=set3&bgset=bg2" alt="Pauline Sargent" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/paulinesargent">Pauline Sargent</a></p>
+	      	</div>
+		</div>
+		<div class="flex-supporters-item text-center thumbnail advisor">
+			<img src="https://robohash.org/andreea-wade?set=set3&bgset=bg2" alt="Andreea Wade" class="img-circle" width="30%">
+			<div class="caption">
+		        <p><a href="https://www.linkedin.com/in/andreeawade">Andreea Wade</a></p>
+	      	</div>
+		</div>
+	</div>
+
+	<h1 class="tk-cooper-black-std">Companies</h1>
+	<p>A high five to companies who have supported, hosted and getting involved in our events. <small>(In alphabetical order)</small></p>
+
+
+
+
+
+	{% for sponsor, events_list in events_sponsors_list %}
+	<div class="panel panel-default ">
+		<div class="panel-heading" role="tab" id="heading{{sponsor.id}}">
+		  <h4 class="panel-title">
+		    <a {%if not forloop.first %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{sponsor.id}}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{sponsor.id}}">
+		      {{sponsor.name}}
+		    </a>
+		  </h4>
+		</div>
+		<div id="collapse{{sponsor.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{sponsor.id}}">
+		  <div class="panel-body flex-events-container">
+		  	<div class="flex-events-item">
+			  	<div>{{sponsor.blurb|md|safe}}</div>
+			  	<div>URL: <a href="{{key.url}}">{{sponsor.url}}</a></div>
+			</div>
+			<div class="flex-events-item">
+				<div class="panel panel-info">
+					<div class="panel-heading">Events supported by {{sponsor.name}}</div>
+					{% for event in events_list %}
+					<a href="{% url 'events:event_detail' event.slug event.id %}" class="list-group-item">{{event.title}} ({{event.start_datetime}})</a>
+					{% endfor %}
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+	{% endfor %}
+
+
+
+
+
+	<div class="flex-supporters-sponsors-container"> 		
+		<div class="flex-supporters-sponsors-item">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+				<h1>Companies</h1>
+				{% for sponsor, events_list in events_sponsors_list %}
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="heading{{sponsor.id}}">
+					  <h4 class="panel-title">
+					    <a {%if not forloop.first %}class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{sponsor.id}}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{sponsor.id}}">
+					      {{sponsor.name}}
+					    </a>
+					  </h4>
+					</div>
+					<div id="collapse{{sponsor.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{sponsor.id}}">
+					  <div class="panel-body flex-events-container">
+					  	<div class="flex-events-item">
+						  	<div>{{sponsor.blurb|md|safe}}</div>
+						  	<div>URL: <a href="{{key.url}}">{{sponsor.url}}</a></div>
+						</div>
+						<div class="flex-events-item">
+							<div class="panel panel-info">
+								<div class="panel-heading">Events supported by {{sponsor.name}}</div>
+								{% for event in events_list %}
+								<a href="{% url 'events:event_detail' event.slug event.id %}" class="list-group-item">{{event.title}} ({{event.start_datetime}})</a>
+								{% endfor %}
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>	
+	</div>
+		
+	
+
+</div>
+{% endblock %}
