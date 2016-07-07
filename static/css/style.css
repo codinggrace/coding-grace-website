@@ -78,7 +78,7 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
 }
 
 
-.flex-supporters-sponsors-container, .flex-supporters-container, .flex-events-container {
+.flex-companies-container, .flex-supporters-container, .flex-events-container {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
@@ -92,12 +92,13 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     justify-content: center;
 }
 
+.flex-supporters-container {
+    background-image: url("/static/images/navy_blue.png");
+}
+
 /* Contains overall supports and sponsors with events*/
-.flex-supporters-sponsors-item {
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+.flex-companies-item {
+ 
 }
 
 .flex-supporters-item {
@@ -111,7 +112,14 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
 
 .advisor {
     width: 200px;
+    height: 200px;
 }
+
+.founder {
+    height: 310px;
+    /*padding-bottom: 10px;*/
+}
+
 
 /*Just the events supported by sponsor*/
 .flex-events-item {
