@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.utils.timezone import now
 
-from events.models import Chapter, City, Country, Event, Location, Organiser, Sponsor
+from events.models import Chapter, City, Country, Event, Location, Mentor, Organiser, Sponsor
 from news.models import NewsPost
 
 def home(request):
@@ -82,7 +82,10 @@ def supporters(request):
     context = {"active":"supporters"}
     sponsors = Sponsor.objects.all().order_by("name")
     context["sponsors"] = sponsors
-    
+
+    context["organisers"] = Organiser.objects.all().order_by("last_name")
+    context["mentors"] = Mentor.objects.all().exclude(first_name="").order_by("last_name")
+
     events_sponsors_list = []
     events = Event.objects.all()
     for s in sponsors:

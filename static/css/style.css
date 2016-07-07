@@ -22,6 +22,10 @@ footer a:visited {color:white; text-decoration:underline;}  /* visited link */
 footer a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
 footer a:active {color:white; text-decoration:underline;}  /* selected link */
 
+.highlight {
+    background-color: yellow;
+}
+
 .about h1{
     color: #F7A21B;
     font-size:96px;
@@ -77,7 +81,6 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     color:white;
 }
 
-
 .flex-companies-container, .flex-supporters-container, .flex-events-container {
     display: -webkit-flex;
     display: flex;
@@ -92,22 +95,24 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     justify-content: center;
 }
 
-.flex-supporters-container {
+.flex-companies-container, .flex-supporters-container {
     background-image: url("/static/images/navy_blue.png");
 }
 
 /* Contains overall supports and sponsors with events*/
 .flex-companies-item {
- 
+    width: 180px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
+.flex-companies-item div.caption {
+    height: 80px;
+}
 .flex-supporters-item {
     width: 350px;
     margin: 10px;
     padding: 10px;
-    /*background: #F7A21B;
-    color: white;*/
-
 }
 
 .advisor {
@@ -120,6 +125,12 @@ footer a:active {color:white; text-decoration:underline;}  /* selected link */
     /*padding-bottom: 10px;*/
 }
 
+.mentor, .organiser{
+    height: 120px;
+}
+.mentor {
+    width: 150px;
+}
 
 /*Just the events supported by sponsor*/
 .flex-events-item {
