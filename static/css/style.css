@@ -17,11 +17,10 @@ footer {
     color: white;
 }
 
-footer a:link {color:white; text-decoration:underline;}      /* unvisited link */
-footer a:visited {color:white; text-decoration:underline;}  /* visited link */
-footer a:hover {color:black; background-color:yellow; text-decoration:underline;}  /* mouse over link */
-footer a:active {color:white; text-decoration:underline;}  /* selected link */
-
+footer .panel-body, footer .list-group{
+    background-color: white;
+    color: black;
+}
 .highlight {
     background-color: yellow;
 }
