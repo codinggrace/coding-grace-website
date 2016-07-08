@@ -41,7 +41,7 @@
 					{% if cities %}
 						{% for city in cities %}
 							{% url 'chapter' city as the_url %}
-							<a href="{{the_url}}">{{ city|title }}</a>
+							<a href="{{the_url}}">{{ city|title }}</a> {% if not forloop.last %}&middot; {% endif %}
 						{% endfor %}
 					{% else %}
 						<p>No chapters</p>
