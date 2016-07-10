@@ -80,14 +80,14 @@ footer .panel-body, footer .list-group{
     color:white;
 }
 
-.flex-get-involved-container, .flex-companies-container, .flex-supporters-container, .flex-events-container, .flex-getinvolved-container {
+.flex-get-involved-container, .flex-companies-container, .flex-supporters-container, .flex-events-container, .flex-howtohelp-container {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-wrap: wrap;
     flex-wrap: wrap;   
 }
 
-.flex-get-involved-container, .flex-supporters-container, .flex-events-container {
+.flex-get-involved-container, .flex-supporters-container, .flex-events-container, .flex-howtohelp-container {
      -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
@@ -129,6 +129,20 @@ footer .panel-body, footer .list-group{
 }
 .mentor {
     width: 150px;
+}
+
+/* How to help section in chapters page */
+.flex-howtohelp-container {
+    margin: 20px
+}
+.flex-howtohelp-item {
+    border: 1px solid grey;
+    padding: 10px 20px 20px 20px;
+    /*margin: 10px 20px;*/
+}
+
+.flex-howtohelp-item.explanation {
+    width: 1024px;
 }
 
 /*Just the events supported by sponsor*/
