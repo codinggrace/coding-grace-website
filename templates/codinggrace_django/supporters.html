@@ -217,7 +217,6 @@
 					  <div class="panel-body flex-events-container">
 						<div class="flex-events-item">
 							<div class="panel panel-info small">
-								<div class="panel-heading">Events supported by {{sponsor.name}}</div>
 								{% for event in events_list %}
 								<a href="{% url 'events:event_detail' event.slug event.id %}" class="list-group-item">{{event.title}} ({{event.start_datetime}})</a>
 								{% endfor %}
