@@ -63,7 +63,7 @@
 <h1 id="past-events" class="text-center tk-cooper-black-std">Past Events</h1>
 <div class="past-events">
     {% for year_event in past_events %}
-    <h2>{{year_event.0}}</h2>
+    <h2 class="text-center tk-cooper-black-std">{{year_event.0}}</h2>
     <div class="flex-events-container">
         {% for monthly_event in year_event.1 %}
         <div class="flex-event-item">

@@ -221,7 +221,7 @@ div.chapter-news{
     background-color: #6E4606;
     color:white;
 }
-h1.chapter-past-events{
+h1.chapter-past-events, .past-events h2{
     color:white;
     padding:10px;
     margin-top:0;
