@@ -87,7 +87,7 @@ footer .panel-body, footer .list-group{
     flex-wrap: wrap;   
 }
 
-.flex-get-involved-container, .flex-supporters-container, .flex-events-container, .flex-howtohelp-container {
+.flex-get-involved-container, .flex-supporters-container, .flex-howtohelp-container {
      -webkit-align-items: center;
     align-items: center;
     -webkit-justify-content: center;
