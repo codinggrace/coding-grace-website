@@ -16,16 +16,16 @@
 
     <div class="row">
         <div class="col-md-6">
-        {% if chapter.organisers %}
+        {% if chapter_organisers %}
             <div class="jumbotron">
-                <h1 class="tk-cooper-black-std">{{ chapter|upper }}</h1>
+                <h1 class="tk-cooper-black-std">Organisers</h1>
                 <p>
-                    <span class="glyphicon glyphicon-user"></span>
-                    {% for organiser in chapter.organisers.all %}
-                        <a href="{{organiser.url}}">{{organiser}}</a>
+                    {% for organiser in chapter_organisers %}
+                        <span class="highlight">
+                        {% if organiser.url %}<a href="{{organiser.url}}">{{organiser}}</a>{% else %}{{organiser}}{% endif %}</span>{% if not forloop.last %} <span class="glyphicon glyphicon-star-empty small"></span> {% endif %}
                     {% endfor %}
                 </p>
-                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> {{chapter.email}}</a></p>
+                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"> {{chapter.email}}</a></p>
             </div>
         {% else %}
             <div class="jumbotron">
