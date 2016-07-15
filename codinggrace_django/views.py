@@ -17,8 +17,12 @@ def chapters(request):
 
 def chapter(request, chapter):
     context = {"active":"about"}
+    events_objects = Event.objects.filter(is_published=True)
+    
+    # Used if a chapter doesn't exist and displays up to 5 upcoming events in general
+    context["upcoming_events"] = events_objects.filter(start_datetime__gte=now()).order_by('start_datetime').reverse()[:5]
 
-    chapter_objects = Event.objects.filter(is_published=True).filter(location__city__name=chapter)
+    chapter_objects = events_objects.filter(location__city__name__iexact=chapter)
 
     # Get chapter's upcoming events
     current_upcoming_events = chapter_objects.filter(start_datetime__gte=now()).order_by('start_datetime')
@@ -38,7 +42,7 @@ def chapter(request, chapter):
 
     # Get the chapter object if it exists, if not, just return the string
     try:
-        context["chapter"] = Chapter.objects.get(city__name = chapter)
+        context["chapter"] = Chapter.objects.get(city__name__iexact = chapter)
     except Chapter.DoesNotExist:
         context["chapter"] = chapter
 

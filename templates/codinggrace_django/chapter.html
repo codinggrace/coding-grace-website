@@ -25,17 +25,17 @@
                         {% if organiser.url %}<a href="{{organiser.url}}">{{organiser}}</a>{% else %}{{organiser}}{% endif %}</span>{% if not forloop.last %} <span class="glyphicon glyphicon-star-empty small"></span> {% endif %}
                     {% endfor %}
                 </p>
-                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"> {{chapter.email}}</a></p>
+                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> {{chapter.email}}</a></p>
             </div>
         {% else %}
             <div class="jumbotron">
-                <h1 class="tk-cooper-black-std">{{ chapter|upper }}</h1>
+                <h1 class="tk-cooper-black-std"><span class="glyphicon glyphicon-tree-deciduous"></span>Chapter doesn't exist</h1>
 
                 <p>
                     {% if chapter.city.is_chapter %}
-                    Interested in helping out? Contact us for further info.
+                    Interested in helping out? Check out our <a href="http://localhost:8000/chapters/#get_involved">How to Get Involved</a> section.
                     {% else %}
-                    Want to start a chapter? Contact us for further info.
+                    Want to start one? Check out our <a href="http://localhost:8000/chapters/#get_involved">How to Get Involved</a> section..
                     {% endif %}
                 </p>
                 <p><a href="mailto:contact@codinggrace.com" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> contact@codinggrace.com</a></p>
@@ -51,7 +51,17 @@
                 <p>{{event.location.venue}}, {{event.location.address1}}, {% if event.location.address2 %}{{event.location.address2}}{% endif %}</p>
                 {% endfor %}
             {% else %}
-                <h3><span class="glyphicon glyphicon-asterisk"></span> Events coming soon.</span></h3>
+                {% if upcoming_events %}
+                    <ul class="list-group">
+                    {% for event in upcoming_events %}
+                        
+                        <li class="list-group-item"><a href="{% url 'events:event_detail' event.slug event.id %}">{{event.title}} ({{event.start_datetime}})</a></li>
+
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <h3>More events coming soon</h3>
+                {% endif %}
             {% endif %}
         </div>
     </div>
