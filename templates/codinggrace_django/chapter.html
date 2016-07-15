@@ -25,19 +25,15 @@
                         {% if organiser.url %}<a href="{{organiser.url}}">{{organiser}}</a>{% else %}{{organiser}}{% endif %}</span>{% if not forloop.last %} <span class="glyphicon glyphicon-star-empty small"></span> {% endif %}
                     {% endfor %}
                 </p>
-                <p><a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> {{chapter.email}}</a></p>
+                <p>
+                    <h4>Interested in becoming an organiser? Check out our <a href="/chapters/#get_involved">How to Get Involved</a> section.</h4>
+                    <a href="mailto:{{chapter.email}}" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> {{chapter.email}}</a>
+                </p>
             </div>
         {% else %}
             <div class="jumbotron">
                 <h1 class="tk-cooper-black-std"><span class="glyphicon glyphicon-tree-deciduous"></span>Chapter doesn't exist</h1>
-
-                <p>
-                    {% if chapter.city.is_chapter %}
-                    Interested in helping out? Check out our <a href="http://localhost:8000/chapters/#get_involved">How to Get Involved</a> section.
-                    {% else %}
-                    Want to start one? Check out our <a href="http://localhost:8000/chapters/#get_involved">How to Get Involved</a> section..
-                    {% endif %}
-                </p>
+                <p>Want to start one? Check out our <a href="/chapters/#get_involved">How to Get Involved</a> section.</p>
                 <p><a href="mailto:contact@codinggrace.com" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-envelope"></span> contact@codinggrace.com</a></p>
             </div>
         {% endif %}
