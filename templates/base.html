@@ -13,6 +13,31 @@
 
 <body>
     <header>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/" ><span class="glyphicon glyphicon-home"></span> Home</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- <li {% if active == "home" %}class="active"{% endif %}><a href="/">Home</a></li> -->
+                        <li {% if active == "home" %}class="active"{% endif %}><a href="/#about">About</a></li>
+                        <li {% if active == "news" %}class="active"{% endif %}><a href="/news/">News</a></li>
+                        <li {% if active == "chapters" %}class="active"{% endif %}><a href="/chapters/">Chapters</a></li>
+                        <li {% if active == "conduct" %}class="active"{% endif %}><a href="/codeofconduct/">Code Of Conduct</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    </header>
+
+    <!--<header>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-2"></div>
@@ -35,7 +60,7 @@
             </div>
         </div>
     </div>
-    </header>
+    </header>-->
     {% block content %}{% endblock %}
 
     <footer>

@@ -2,12 +2,9 @@ body{
     font-family:"Helvetica", serif;
     background-color:white;
 }
-header{
-    background-image:url('../images/codinggrace-logo.jpg');
-    background-position:center;
-    background-repeat:no-repeat;
-    color:#F7A21B;
-    padding:20px 0;
+
+header {
+    margin-bottom: 51px;
 }
 
 footer {
