@@ -9,8 +9,7 @@ header {
 
 footer {
     background-color: #E45635;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 40px 30px 20px 30px;
     color: white;
 }
 
@@ -269,7 +268,7 @@ div.other-chapters{
 
 #coc #full{ background-color: #E4E4E4; }
 #coc #info{ background-color: #F1F1F1; }
-#coc #contact_otherinfo{ color: white; }
+#coc #contact_otherinfo{ color: white;}
 
 /* Background image, just add top:XXpx, see about-peeps as example */
 .bg-image{
