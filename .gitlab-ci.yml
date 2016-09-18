@@ -8,10 +8,13 @@ variables:
 
 build:
   tags:
-    - x86_64
-    - shell
+    - docker
+  image: docker:latest
+  services:
+    - docker:dind
   stage: build
   script:
+    - set
     - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${CI_REGISTRY}
     - docker build -t ${TAG} .
     - docker push ${TAG}
