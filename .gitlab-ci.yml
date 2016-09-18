@@ -1,0 +1,49 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  TAG: ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_PIPELINE_ID}
+
+build:
+  tags:
+    - docker
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: build
+  script:
+    - set
+    - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${CI_REGISTRY}
+    - docker build -t ${TAG} .
+    - docker push ${TAG}
+
+# test.python:
+#   image: $TAG
+#   tags:
+#     - x86_64
+#     - docker
+#   stage: test
+#   script:
+#     - python manage.py test --settings=gamecraft.settings_test
+
+test.nomad:
+  image: gitlab.twomeylee.name:7443/twomeylee/nomad-jobs:latest
+  tags:
+    - x86_64
+    - docker
+  stage: test
+  script:
+    - validate
+
+deploy:
+  image: gitlab.twomeylee.name:7443/twomeylee/nomad-jobs:latest
+  tags:
+    - x86_64
+    - docker
+  stage: deploy
+  script:
+    - deploy
+  only:
+    - master

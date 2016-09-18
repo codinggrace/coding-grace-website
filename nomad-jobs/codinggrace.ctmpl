@@ -1,0 +1,159 @@
+job "codinggrace" {
+	datacenters = ["scaleway"]
+
+	update {
+		stagger = "10s"
+		max_parallel = 1
+	}
+
+	group "memcached" {
+		count = 1
+
+		task "memcached" {
+			driver = "docker"
+			config {
+				image = "memcached:latest"
+				port_map {
+					memcached = 11211
+				}
+			}
+			service {
+				name = "codinggrace-memcached"
+				port = "memcached"
+				check {
+					name = "alive"
+					type = "tcp"
+					interval = "10s"
+					timeout = "2s"
+				}
+			}
+			resources {
+				cpu = 500
+				memory = 64
+				network {
+					mbits = 10
+					port "memcached" {}
+				}
+			}
+		}
+	}
+
+	group "postgresql" {
+		count = 1
+
+		task "postgresql" {
+			driver = "docker"
+			config {
+				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.3-3"
+				port_map {
+					psql = 5432
+				}
+				auth {
+					username = "{{key "nomad/docker/deploy/username"}}"
+					password = "{{key "nomad/docker/deploy/password"}}"
+					server_address = "{{key "nomad/docker/deploy/server_address"}}"
+				}
+			}
+			service {
+				name = "codinggrace-postgresql"
+				port = "psql"
+				check {
+					name = "alive"
+					type = "tcp"
+					interval = "10s"
+					timeout = "2s"
+				}
+			}
+			resources {
+				cpu = 500
+				memory = 64
+				network {
+					mbits = 10
+					port "psql" {}
+				}
+			}
+
+			env {
+				POSTGRES_DB = "{{key "codinggrace/prod/postgresql/db"}}"
+				POSTGRES_USER = "{{key "codinggrace/prod/postgresql/user"}}"
+				POSTGRES_PASSWORD = "{{key "codinggrace/prod/postgresql/password"}}"
+				AWS_ACCESS_KEY_ID = "{{key "postgresql-backups/aws_access_key_id"}}"
+				AWS_SECRET_ACCESS_KEY = "{{key "postgresql-backups/aws_secret_access_key"}}"
+				S3_BUCKET = "{{key "postgresql-backups/bucket"}}"
+				S3_PREFIX = "codinggrace/"
+			}
+		}
+	}
+
+	group "app" {
+		count = 3
+
+		restart {
+			attempts = 10
+			interval = "5m"
+			delay = "25s"
+			mode = "delay"
+		}
+
+		task "codinggrace" {
+			driver = "docker"
+
+			config {
+				image = "{{env "TAG"}}"
+				port_map {
+					http = 8000
+				}
+				auth {
+					username = "{{key "nomad/docker/deploy/username"}}"
+					password = "{{key "nomad/docker/deploy/password"}}"
+					server_address = "{{key "nomad/docker/deploy/server_address"}}"
+				}
+			}
+
+			service {
+				name = "codinggrace"
+				tags = ["codinggrace", "http"]
+				port = "http"
+				check {
+					name = "health"
+					type = "http"
+					path = "/"
+					interval = "10s"
+					timeout = "2s"
+				}
+				check {
+					name = "alive"
+					type = "tcp"
+					interval = "10s"
+					timeout = "2s"
+				}
+			}
+
+			resources {
+				cpu = 500
+				memory = 256
+				network {
+					mbits = 10
+					port "http" {
+					}
+				}
+			}
+
+			env {
+				DATABASE_URL = "postgres://{{key "codinggrace/prod/postgresql/user"}}:{{key "codinggrace/prod/postgresql/password"}}@{{key "codinggrace/prod/postgresql/host"}}:{{key "codinggrace/prod/postgresql/port"}}/{{key "codinggrace/prod/postgresql/db"}}"
+				POSTGRESQL_HOST = "{{key "codinggrace/prod/postgresql/host"}}"
+				POSTGRESQL_PORT = "{{key "codinggrace/prod/postgresql/port"}}"
+				POSTGRESQL_DB = "{{key "codinggrace/prod/postgresql/db"}}"
+				POSTGRESQL_USER = "{{key "codinggrace/prod/postgresql/user"}}"
+				POSTGRESQL_PASSWORD = "{{key "codinggrace/prod/postgresql/password"}}"
+
+				MEMCACHIER_USERNAME = "{{key "codinggrace/prod/memcached/username"}}"
+				MEMCACHIER_PASSWORD = "{{key "codinggrace/prod/memcached/password"}}"
+				MEMCACHIER_SERVERS = "{{key "codinggrace/prod/memcached/host"}}:{{key "codinggrace/prod/memcached/port"}}"
+
+				DJANGO_SECRET_KEY = "{{key "codinggrace/prod/django_secret_key"}}"
+				HOSTEDGRAPHITE_APIKEY = "{{key "codinggrace/prod/hostedgraphite_apikey"}}"
+			}
+		}
+	}
+}
