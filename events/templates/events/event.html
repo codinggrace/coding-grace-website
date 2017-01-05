@@ -80,20 +80,20 @@
             </div>
             <div class="col-md-5">
                 <h1 >FAQ</h1>
-                <h3>Q. I see it's female-friendly, are guys welcome as well?</h3>
-                <p><strong>YES.</strong> You are welcome as a +1. If you have any questions, feel free to contact me at contact@codinggrace.com.</p>
+                <h3>Q. I see it's female-friendly, are other genders welcome as well?</h3>
+                <p><strong>YES.</strong> We welcome people from all diverse backgrounds. We label our events "female-friendly" to encourage more women interested/involved in tech to particiate in our events.</p> 
+                <p>If you have any questions, feel free to contact us at <a href="mailto:contact@codinggrace.com">contact@codinggrace.com</a>.</p>
 
                 {% if event.faq %}
                 {{event.faq|md|safe}}
                 {% endif %}
 
-                <h2>If you have any other questions</h2>
-                <p>You can contact <strong>{{event.organiser}}</strong> by emailing <a href="mailto:{{event.organiser.email}}">{{event.organiser.email}}</a>.</p>
-
-
-                <h1>Refunds (if applicable)</h1>
+                <h1>Refunds <small>(if applicable)</small></h1>
                 <p>Full refunds until 24 hours before the event.</p>
                 <p>If there are not enough people signed up to the event, I will be in touch to refund you.</p>
+
+                <h1>If you have any other questions</h1>
+                <p>You can contact <strong>{{event.organiser}}</strong> by emailing <a href="mailto:{{event.organiser.email}}">{{event.organiser.email}}</a>.</p>
             </div>
         </div>
 
