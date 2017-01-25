@@ -87,7 +87,7 @@ def supporters(request):
     sponsors = Sponsor.objects.all().order_by("name")
     context["sponsors"] = sponsors
 
-    context["organisers"] = Organiser.objects.all().order_by("last_name")
+    context["organisers"] = Organiser.objects.all().order_by("first_name")
     context["city_chapters"] = City.objects.all().order_by("name")
     context["mentors"] = Mentor.objects.all().exclude(first_name="").order_by("last_name")
 
