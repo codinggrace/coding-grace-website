@@ -10,7 +10,7 @@ job "codinggrace" {
 		count = 1
 
 		ephemeral_disk {
-			size = 5
+			size = 200
 		}
 
 		task "memcached" {
@@ -99,7 +99,7 @@ job "codinggrace" {
 		count = 3
 
 		ephemeral_disk {
-			size = 10
+			size = 200
 		}
 
 		restart {
