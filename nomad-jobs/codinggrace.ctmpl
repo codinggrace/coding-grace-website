@@ -9,6 +9,10 @@ job "codinggrace" {
 	group "memcached" {
 		count = 1
 
+		ephemeral_disk {
+			size = 5
+		}
+
 		task "memcached" {
 			driver = "docker"
 			config {
@@ -40,6 +44,12 @@ job "codinggrace" {
 
 	group "postgresql" {
 		count = 1
+
+		ephemeral_disk {
+			size = 500
+			migrate = true
+			sticky = true
+		}
 
 		task "postgresql" {
 			driver = "docker"
@@ -88,6 +98,10 @@ job "codinggrace" {
 	group "app" {
 		count = 3
 
+		ephemeral_disk {
+			size = 10
+		}
+
 		restart {
 			attempts = 10
 			interval = "5m"
@@ -112,7 +126,13 @@ job "codinggrace" {
 
 			service {
 				name = "codinggrace"
-				tags = ["codinggrace", "http"]
+				tags = [
+					"codinggrace",
+					"http",
+					"urlprefix-codinggrace.twomeylee.name/",
+					"urlprefix-codinggrace.com/",
+					"urlprefix-www.codinggrace.com/"
+				]
 				port = "http"
 				check {
 					name = "health"
