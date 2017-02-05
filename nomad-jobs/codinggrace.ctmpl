@@ -68,8 +68,9 @@ job "codinggrace" {
 				name = "codinggrace-postgresql"
 				port = "psql"
 				check {
-					name = "alive"
-					type = "tcp"
+					name = "pg_isready"
+					type = "script"
+					script = "/usr/bin/pg_isready"
 					interval = "10s"
 					timeout = "2s"
 				}
