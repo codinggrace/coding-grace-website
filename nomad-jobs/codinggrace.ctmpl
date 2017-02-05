@@ -54,7 +54,7 @@ job "codinggrace" {
 		task "postgresql" {
 			driver = "docker"
 			config {
-				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.3-3"
+				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.5-1"
 				port_map {
 					psql = 5432
 				}
