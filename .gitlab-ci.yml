@@ -3,12 +3,12 @@ stages:
   - test
   - deploy
 
+# See https://docs.gitlab.com/ce/ci/docker/using_docker_build.html for overlayfs tip
 variables:
   TAG: ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_PIPELINE_ID}
+  DOCKER_DRIVER: overlay2
 
 build:
-  tags:
-    - docker
   image: docker:latest
   services:
     - docker:dind
@@ -21,29 +21,24 @@ build:
 
 # test.python:
 #   image: $TAG
-#   tags:
-#     - x86_64
-#     - docker
 #   stage: test
 #   script:
 #     - python manage.py test --settings=gamecraft.settings_test
 
 test.nomad:
   image: gitlab.twomeylee.name:7443/twomeylee/nomad-jobs:latest
-  tags:
-    - x86_64
-    - docker
   stage: test
   script:
     - validate
 
-deploy:
+deploy_production:
   image: gitlab.twomeylee.name:7443/twomeylee/nomad-jobs:latest
-  tags:
-    - x86_64
-    - docker
   stage: deploy
+  environment:
+    name: production
+    url: http://codinggrace.twomeylee.name/
   script:
     - deploy
+  when: manual
   only:
     - master
