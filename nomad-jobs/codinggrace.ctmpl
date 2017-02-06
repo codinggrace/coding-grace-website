@@ -58,11 +58,6 @@ job "codinggrace" {
 				port_map {
 					psql = 5432
 				}
-				auth {
-					username = "{{key "nomad/docker/deploy/username"}}"
-					password = "{{key "nomad/docker/deploy/password"}}"
-					server_address = "{{key "nomad/docker/deploy/server_address"}}"
-				}
 			}
 			service {
 				name = "codinggrace-postgresql"

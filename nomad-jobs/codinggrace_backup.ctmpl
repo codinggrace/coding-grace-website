@@ -32,11 +32,6 @@ job "codinggrace-backup" {
 
       config {
 				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:latest"
-				auth {
-					username = "{{key "nomad/docker/deploy/username"}}"
-					password = "{{key "nomad/docker/deploy/password"}}"
-					server_address = "{{key "nomad/docker/deploy/server_address"}}"
-				}
 			}
 
       logs {
