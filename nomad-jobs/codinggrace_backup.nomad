@@ -29,12 +29,13 @@ job "codinggrace-backup" {
 
     task "postgresql-backup" {
       driver = "docker"
-      command = "/bin/bash"
-      args = ["${NOMAD_TASK_DIR}/run.sh"]
 
-      config {
-				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:latest"
-			}
+
+        config {
+            image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:latest"
+            command = "/bin/bash"
+            args = ["${NOMAD_TASK_DIR}/run.sh"]
+        }
 
       logs {
         max_files     = 2
@@ -51,7 +52,7 @@ job "codinggrace-backup" {
 
       template {
           destination = "${NOMAD_TASK_DIR}/run.sh"
-          data = <<<EOF
+          data = <<EOF
 #!/bin/sh
 
 {{if service "codinggrace-postgresql@scaleway"}}

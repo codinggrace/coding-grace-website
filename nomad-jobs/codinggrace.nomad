@@ -83,7 +83,7 @@ job "codinggrace" {
 
             template {
                 destination = "${NOMAD_TASK_DIR}/run.sh"
-                data = <<<EOF
+                data = <<EOF
 #!/bin/bash
 export POSTGRES_DB="{{key "codinggrace/prod/postgresql/db"}}"
 export POSTGRES_USER="{{key "codinggrace/prod/postgresql/user"}}"
@@ -117,7 +117,7 @@ EOF
 			driver = "docker"
 
 			config {
-				image = "{{env "TAG"}}"
+				image = "NOMAD_DEPLOY_TAG"
                 command = "/bin/bash"
                 args = ["${NOMAD_TASK_DIR}/run.sh"]
 				port_map {
@@ -162,7 +162,7 @@ EOF
 
 			template {
                 destination = "${NOMAD_TASK_DIR}/run.sh"
-                data = <<<EOF
+                data = <<EOF
 #!/bin/bash
 {{if service "codinggrace-postgresql@scaleway"}}
 {{with index (service "codinggrace-postgresql@scaleway") 0}}
