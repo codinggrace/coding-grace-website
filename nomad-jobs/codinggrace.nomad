@@ -55,6 +55,8 @@ job "codinggrace" {
 			driver = "docker"
 			config {
 				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.5-1"
+                command = "/bin/bash"
+                args = ["${NOMAD_TASK_DIR}/run.sh"]
 				port_map {
 					psql = 5432
 				}
@@ -79,15 +81,21 @@ job "codinggrace" {
 				}
 			}
 
-			env {
-				POSTGRES_DB = "{{key "codinggrace/prod/postgresql/db"}}"
-				POSTGRES_USER = "{{key "codinggrace/prod/postgresql/user"}}"
-				POSTGRES_PASSWORD = "{{key "codinggrace/prod/postgresql/password"}}"
-				AWS_ACCESS_KEY_ID = "{{key "postgresql-backups/aws_access_key_id"}}"
-				AWS_SECRET_ACCESS_KEY = "{{key "postgresql-backups/aws_secret_access_key"}}"
-				S3_BUCKET = "{{key "postgresql-backups/bucket"}}"
-				S3_PREFIX = "codinggrace/"
-			}
+            template {
+                destination = "${NOMAD_TASK_DIR}/run.sh"
+                data = <<<EOF
+#!/bin/bash
+export POSTGRES_DB="{{key "codinggrace/prod/postgresql/db"}}"
+export POSTGRES_USER="{{key "codinggrace/prod/postgresql/user"}}"
+export POSTGRES_PASSWORD="{{key "codinggrace/prod/postgresql/password"}}"
+export AWS_ACCESS_KEY_ID="{{key "postgresql-backups/aws_access_key_id"}}"
+export AWS_SECRET_ACCESS_KEY="{{key "postgresql-backups/aws_secret_access_key"}}"
+export S3_BUCKET="{{key "postgresql-backups/bucket"}}"
+export S3_PREFIX="codinggrace/"
+
+exec /usr/local/bin/run.sh
+EOF
+            }
 		}
 	}
 
@@ -110,13 +118,10 @@ job "codinggrace" {
 
 			config {
 				image = "{{env "TAG"}}"
+                command = "/bin/bash"
+                args = ["${NOMAD_TASK_DIR}/run.sh"]
 				port_map {
 					http = 8000
-				}
-				auth {
-					username = "{{key "nomad/docker/deploy/username"}}"
-					password = "{{key "nomad/docker/deploy/password"}}"
-					server_address = "{{key "nomad/docker/deploy/server_address"}}"
 				}
 			}
 
@@ -155,20 +160,31 @@ job "codinggrace" {
 				}
 			}
 
-			env {
-				DATABASE_URL = "postgres://{{key "codinggrace/prod/postgresql/user"}}:{{key "codinggrace/prod/postgresql/password"}}@{{key "codinggrace/prod/postgresql/host"}}:{{key "codinggrace/prod/postgresql/port"}}/{{key "codinggrace/prod/postgresql/db"}}"
-				POSTGRESQL_HOST = "{{key "codinggrace/prod/postgresql/host"}}"
-				POSTGRESQL_PORT = "{{key "codinggrace/prod/postgresql/port"}}"
-				POSTGRESQL_DB = "{{key "codinggrace/prod/postgresql/db"}}"
-				POSTGRESQL_USER = "{{key "codinggrace/prod/postgresql/user"}}"
-				POSTGRESQL_PASSWORD = "{{key "codinggrace/prod/postgresql/password"}}"
+			template {
+                destination = "${NOMAD_TASK_DIR}/run.sh"
+                data = <<<EOF
+#!/bin/bash
+{{if service "codinggrace-postgresql@scaleway"}}
+{{with index (service "codinggrace-postgresql@scaleway") 0}}
+export POSTGRESQL_HOST="{{.Address}}"
+export POSTGRES_PORT="{{.Port}}"
+export DATABASE_URL="postgres://{{key "codinggrace/prod/postgresql/user"}}:{{key "codinggrace/prod/postgresql/password"}}@{{.Address}}:{{.Port}}/{{key "codinggrace/prod/postgresql/db"}}"
+{{end}}
+{{end}}
 
-				MEMCACHIER_USERNAME = "{{key "codinggrace/prod/memcached/username"}}"
-				MEMCACHIER_PASSWORD = "{{key "codinggrace/prod/memcached/password"}}"
-				MEMCACHIER_SERVERS = "{{key "codinggrace/prod/memcached/host"}}:{{key "codinggrace/prod/memcached/port"}}"
+export POSTGRESQL_DB="{{key "codinggrace/prod/postgresql/db"}}"
+export POSTGRESQL_USER="{{key "codinggrace/prod/postgresql/user"}}"
+export POSTGRESQL_PASSWORD="{{key "codinggrace/prod/postgresql/password"}}"
 
-				DJANGO_SECRET_KEY = "{{key "codinggrace/prod/django_secret_key"}}"
-				HOSTEDGRAPHITE_APIKEY = "{{key "codinggrace/prod/hostedgraphite_apikey"}}"
+export MEMCACHIER_USERNAME="{{key "codinggrace/prod/memcached/username"}}"
+export MEMCACHIER_PASSWORD="{{key "codinggrace/prod/memcached/password"}}"
+export MEMCACHIER_SERVERS="{{key "codinggrace/prod/memcached/host"}}:{{key "codinggrace/prod/memcached/port"}}"
+
+export DJANGO_SECRET_KEY="{{key "codinggrace/prod/django_secret_key"}}"
+export HOSTEDGRAPHITE_APIKEY="{{key "codinggrace/prod/hostedgraphite_apikey"}}"
+
+exec gunicorn codinggrace_django.wsgi --bind 0.0.0.0:8000 --log-file=-
+EOF
 			}
 		}
 	}
