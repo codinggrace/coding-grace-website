@@ -132,7 +132,8 @@ EOF
 					"http",
 					"urlprefix-codinggrace.twomeylee.name/",
 					"urlprefix-codinggrace.com/",
-					"urlprefix-www.codinggrace.com/"
+					"urlprefix-www.codinggrace.com/",
+					"urlprefix-twomeylee.codinggrace.com/",
 				]
 				port = "http"
 				check {
