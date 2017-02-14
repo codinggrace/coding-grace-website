@@ -33,7 +33,7 @@ job "codinggrace-backup" {
 
         config {
             image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:latest"
-            command = "/bin/bash"
+            command = "/bin/sh"
             args = ["${NOMAD_TASK_DIR}/run.sh"]
         }
 
