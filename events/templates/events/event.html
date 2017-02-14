@@ -29,12 +29,13 @@
                     <span class="glyphicon glyphicon-map-marker"></span> <strong>{{event.location.venue}}</strong>, {{event.location.address1}}{% if event.location.address2 %}, {{event.location.address2}}{% endif %}, {{event.location.city|capfirst}}
                     <br/>
                     <span class="glyphicon glyphicon-calendar"></span> {{event.start_datetime|date:"D, dS M Y"}} {{ event.start_datetime|time:"H:i" }} till {{ event.end_datetime|time:"H:i" }}
+
                 </section>
                 {% if not workshop_ended %}
                 <h3><span class="glyphicon glyphicon-time"></span> {{ event.start_datetime|timeuntil }} left to reserve your place.</h3>
                 {% endif %}
 
-                <h2>Workshop details <small><span class="glyphicon glyphicon-tag"></span> {% for level in event.level_type.all %}{{ level }}{% endfor %}</small></h2>
+                <h2>Workshop details <small> {% for level in event.level_type.all %}<span class="label label-info">{{ level }}</span> {% endfor %}</small></h2>
 
                 <h4><span class="glyphicon glyphicon-euro"></span> {{event.cost}}</h4>
 
@@ -80,8 +81,9 @@
             </div>
             <div class="col-md-5">
                 <h1 >FAQ</h1>
-                <h3>Q. I see it's female-friendly, are guys welcome as well?</h3>
-                <p><strong>YES.</strong> You are welcome as a +1. If you have any questions, feel free to contact me at contact@codinggrace.com.</p>
+                <h3>A lot of our events are female-friendly events, we have enquiries asking if guys are welcome as well?</h3>
+                <p><strong>YES.</strong> You are welcome. Events we run or partner in are diversity friendly. If you have any questions, feel free to contact me at contact@codinggrace.com.</p>
+
 
                 {% if event.faq %}
                 {{event.faq|md|safe}}
@@ -91,7 +93,7 @@
                 <p>You can contact <strong>{{event.organiser}}</strong> by emailing <a href="mailto:{{event.organiser.email}}">{{event.organiser.email}}</a>.</p>
 
 
-                <h1>Refunds</h1>
+                <h1>Refunds <small>(Only applicable if this is a PAID event)</small></h1>
                 <p>Full refunds until 24 hours before the event.</p>
                 <p>If there are not enough people signed up to the event, I will be in touch to refund you.</p>
             </div>
