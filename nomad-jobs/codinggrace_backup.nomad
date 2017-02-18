@@ -62,15 +62,15 @@ export POSTGRES_PORT="{{.Port}}"
 {{end}}
 {{end}}
 
-export POSTGRES_DB = "{{key "codinggrace/prod/postgresql/db"}}"
-export POSTGRES_USER = "{{key "codinggrace/prod/postgresql/user"}}"
-export POSTGRES_PASSWORD = "{{key "codinggrace/prod/postgresql/password"}}"
+export POSTGRES_DB="{{key "codinggrace/prod/postgresql/db"}}"
+export POSTGRES_USER="{{key "codinggrace/prod/postgresql/user"}}"
+export POSTGRES_PASSWORD="{{key "codinggrace/prod/postgresql/password"}}"
 
-export AWS_ACCESS_KEY_ID = "{{key "postgresql-backups/aws_access_key_id"}}"
-export AWS_SECRET_ACCESS_KEY = "{{key "postgresql-backups/aws_secret_access_key"}}"
-export S3_BUCKET = "{{key "postgresql-backups/bucket"}}"
-export S3_PREFIX = "codinggrace/"
-export S3_FILENAME = "codinggrace"
+export AWS_ACCESS_KEY_ID="{{key "postgresql-backups/aws_access_key_id"}}"
+export AWS_SECRET_ACCESS_KEY="{{key "postgresql-backups/aws_secret_access_key"}}"
+export S3_BUCKET="{{key "postgresql-backups/bucket"}}"
+export S3_PREFIX="codinggrace/"
+export S3_FILENAME="codinggrace"
 
 exec /usr/local/bin/backup
 EOF
