@@ -8,6 +8,10 @@ job "codinggrace-backup" {
     prohibit_overlap = true
   }
 
+  parameterized {
+    payload = "forbidden"
+  }
+
   update {
     stagger = "10s"
     max_parallel = 1
