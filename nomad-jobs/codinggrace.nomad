@@ -54,7 +54,7 @@ job "codinggrace" {
 		task "postgresql" {
 			driver = "docker"
 			config {
-				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.5-1"
+				image = "gitlab.twomeylee.name:7443/twomeylee/postgresql:9.5.5-3"
                 command = "/bin/bash"
                 args = ["${NOMAD_TASK_DIR}/run.sh"]
 				port_map {
