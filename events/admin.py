@@ -15,7 +15,7 @@ class CountryAdmin(admin.ModelAdmin):
 admin.site.register(Country, CountryAdmin)
 
 class EventAdmin(admin.ModelAdmin):
-    list_display = ("title", "description", "pub_datetime", "start_datetime", "end_datetime", "location", "organiser", "slug", "is_cancelled", "is_published")
+    list_display = ("title", "pub_datetime", "start_datetime", "end_datetime", "location", "organiser", "slug", "is_cancelled", "is_published")
     list_filter = ["start_datetime"]
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ["title", "description"]
