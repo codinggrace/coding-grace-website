@@ -79,11 +79,14 @@
                 </ul>
             </div>
         </div>
+        {% empty %}
+        <div class="flex-event-item">
+            <h4>No past events so far.</h4>
+        </div>
         {% endfor %}
         
-
-    </div>
-    {% endfor %}
+    </div>        
+    {% endfor %}    
 </div>
 
 {% endblock %}
