@@ -32,10 +32,8 @@ job "codinggrace" {
 				}
 			}
 			resources {
-				cpu = 500
 				memory = 64
 				network {
-					mbits = 10
 					port "memcached" {}
 				}
 			}
@@ -73,10 +71,8 @@ job "codinggrace" {
 				}
 			}
 			resources {
-				cpu = 500
 				memory = 64
 				network {
-					mbits = 10
 					port "psql" {}
 				}
 			}
@@ -152,10 +148,8 @@ EOF
 			}
 
 			resources {
-				cpu = 500
 				memory = 256
 				network {
-					mbits = 10
 					port "http" {
 					}
 				}
