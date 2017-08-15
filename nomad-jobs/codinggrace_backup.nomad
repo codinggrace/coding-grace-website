@@ -12,19 +12,11 @@ job "codinggrace-backup" {
     payload = "forbidden"
   }
 
-  update {
-    stagger = "10s"
-    max_parallel = 1
-  }
-
   group "codinggrace-backup" {
     count = 1
 
     restart {
-      attempts = 10
-      interval = "5m"
-      delay = "25s"
-      mode = "delay"
+      mode = "fail"
     }
 
     ephemeral_disk {
@@ -36,7 +28,7 @@ job "codinggrace-backup" {
 
 
         config {
-            image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:latest"
+            image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:build-258"
             command = "/bin/sh"
             args = ["${NOMAD_TASK_DIR}/run.sh"]
         }
@@ -47,11 +39,7 @@ job "codinggrace-backup" {
       }
 
       resources {
-        cpu    = 500
         memory = 256
-        network {
-          mbits = 100
-        }
       }
 
       template {
