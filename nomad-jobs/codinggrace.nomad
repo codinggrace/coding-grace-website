@@ -141,12 +141,6 @@ EOF
 					interval = "10s"
 					timeout = "2s"
 				}
-				check {
-					name = "alive"
-					type = "tcp"
-					interval = "10s"
-					timeout = "2s"
-				}
 			}
 
 			resources {
@@ -185,5 +179,94 @@ exec gunicorn codinggrace_django.wsgi --bind 0.0.0.0:8000 --log-file=-
 EOF
 			}
 		}
+	}
+
+	group "backup" {
+		count = 1
+
+		ephemeral_disk {
+			size = 100
+		}
+
+		task "codinggrace-periodic-backup" {
+      driver = "docker"
+      config {
+	      image = "gitlab.twomeylee.name:7443/twomeylee/postgresql-backup:build-268"
+        command = "/bin/bash"
+        args = ["${NOMAD_TASK_DIR}/main.sh"]
+      }
+
+      logs {
+        max_files     = 2
+        max_file_size = 15
+      }
+
+      resources {
+        memory = 256
+      }
+
+      template {
+          destination = "${NOMAD_TASK_DIR}/backup.sh"
+          data = <<EOF
+#!/bin/bash
+
+set -xeuo pipefail
+
+{{if service "codinggrace-postgresql@scaleway"}}
+{{with index (service "codinggrace-postgresql@scaleway") 0}}
+export POSTGRES_HOSTNAME="{{.Address}}"
+export POSTGRES_PORT="{{.Port}}"
+{{end}}
+{{end}}
+
+export POSTGRES_DB="{{key "codinggrace/prod/postgresql/db"}}"
+export POSTGRES_USER="{{key "codinggrace/prod/postgresql/user"}}"
+export POSTGRES_PASSWORD="{{key "codinggrace/prod/postgresql/password"}}"
+
+export AWS_ACCESS_KEY_ID="{{key "postgresql-backups/aws_access_key_id"}}"
+export AWS_SECRET_ACCESS_KEY="{{key "postgresql-backups/aws_secret_access_key"}}"
+export S3_BUCKET="{{key "postgresql-backups/bucket"}}"
+export S3_PREFIX="codinggrace/"
+export S3_FILENAME="codinggrace"
+
+exec /usr/local/bin/backup
+EOF
+			}
+
+			template {
+				destination = "${NOMAD_TASK_DIR}/main.sh"
+				perms = 755
+				data = <<EOF
+#!/bin/bash
+
+set -xeuo pipefail
+
+function main {
+	target_time="01:00"
+
+	current_epoch=$(date +%s)
+	target_epoch_short=$(date --date="$target_time" +%s)
+	sleep_seconds_short=$(( $target_epoch_short - $current_epoch ))
+	target_epoch_long=$(date --date="$target_time tomorrow" +%s)
+	sleep_seconds_long=$(( $target_epoch_long - $current_epoch ))
+
+	if (( $sleep_seconds_short > 0 )); then
+	  sleep $sleep_seconds_short;
+	else
+	  sleep $sleep_seconds_long;
+	fi
+
+	bash ${NOMAD_TASK_DIR}/backup.sh
+}
+
+while :
+do
+  main;
+done
+
+EOF
+			}
+
+    }
 	}
 }
