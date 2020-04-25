@@ -3,18 +3,18 @@ stages:
   - test
   - deploy
 
-# See https://docs.gitlab.com/ce/ci/docker/using_docker_build.html for overlayfs tip
 variables:
+  CI_REGISTRY: rg.fr-par.scw.cloud
+  CI_REGISTRY_USER: nologin
+  CI_REGISTRY_PASSWORD: ${SCW_SECRET_TOKEN}
   TAG: ${CI_REGISTRY}/${CI_PROJECT_PATH}:${CI_PIPELINE_ID}
-  DOCKER_DRIVER: overlay2
 
 build:
-  image: docker:latest
-  services:
-    - docker:dind
+  image:
+    name: gcr.io/kaniko-project/executor:debug
+    entrypoint: [""]
   stage: build
   script:
+    - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
     - set
-    - docker login -u gitlab-ci-token -p ${CI_BUILD_TOKEN} ${CI_REGISTRY}
-    - docker build -t ${TAG} .
-    - docker push ${TAG}
+    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $TAG
