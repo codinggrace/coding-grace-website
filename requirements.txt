@@ -5,7 +5,7 @@ django-grappelli==2.7.1
 django-guardian==1.2.0
 Django==1.8.4
 git+https://github.com/kennethreitz/dj-static.git@b02979384d7c7a6944375c5959224bff40c2035a#egg=dj-static
-gunicorn==19.0.0
+gunicorn==20.0.4
 iso8601==0.1.10
 mandrill==1.0.53
 Markdown==2.4.1
@@ -13,8 +13,8 @@ oauthlib==0.6.3
 psycopg2==2.5.3
 pystache==0.5.4
 python3-openid==3.0.4
-raven==5.0.0
 requests-oauthlib==0.4.1
 requests==2.3.0
 six==1.7.2
 static==1.0.2
+sentry-sdk==0.19.4
