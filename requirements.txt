@@ -3,7 +3,7 @@ dj-database-url==0.3.0
 django-allauth==0.17.0
 django-grappelli==2.7.1
 django-guardian==1.2.0
-Django==1.8.4
+Django==1.11.29
 git+https://github.com/kennethreitz/dj-static.git@b02979384d7c7a6944375c5959224bff40c2035a#egg=dj-static
 gunicorn==20.0.4
 iso8601==0.1.10
