@@ -17,4 +17,4 @@ RUN python manage.py test --settings=codinggrace_django.settings \
     && python manage.py collectstatic --settings=codinggrace_django.settings --noinput
 
 EXPOSE 8000
-CMD ["gunicorn", "codinggrace_django.wsgi", "--bind=0.0.0.0:8000", "--log-file=-", "--error-logfile=-", "--capture-output", "-w", "4"]
+CMD ["gunicorn", "codinggrace_django.wsgi", "--bind=0.0.0.0:8000", "--log-file=-", "--error-logfile=-", "--capture-output", "-w", "2"]
